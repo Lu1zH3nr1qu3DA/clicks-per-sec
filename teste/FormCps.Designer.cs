@@ -45,7 +45,7 @@
             // 
             this.lbclicks.AutoSize = true;
             this.lbclicks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbclicks.Location = new System.Drawing.Point(332, 151);
+            this.lbclicks.Location = new System.Drawing.Point(328, 151);
             this.lbclicks.Name = "lbclicks";
             this.lbclicks.Size = new System.Drawing.Size(143, 20);
             this.lbclicks.TabIndex = 0;
@@ -70,7 +70,7 @@
             // 
             this.lbtempo.AutoSize = true;
             this.lbtempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbtempo.Location = new System.Drawing.Point(367, 270);
+            this.lbtempo.Location = new System.Drawing.Point(367, 273);
             this.lbtempo.Name = "lbtempo";
             this.lbtempo.Size = new System.Drawing.Size(58, 20);
             this.lbtempo.TabIndex = 2;

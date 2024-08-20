@@ -114,8 +114,11 @@ namespace teste
                 {
                     timer.Enabled = false;
                     cps = clicks / (tempoi / 1000);
-                    MessageBox.Show("Sua velocidade de clique foi de " + cps + "c/s");
-                    tempo--;
+                    DialogResult msgresultado = MessageBox.Show("Sua velocidade de clique foi de " + cps + "c/s");
+                    if (msgresultado == DialogResult.OK)
+                    {
+                        tempo = 0;
+                    }
                 }
             }
         }
