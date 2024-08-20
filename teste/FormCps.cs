@@ -15,10 +15,10 @@ namespace teste
 {
     public partial class FormCps : Form
     {
-        int clicks = 0;
-        int tempoi = 15000;
-        int tempo = 0;
-        double cps = 0;
+        static int clicks = 0;
+        static int tempoi = 0;
+        static int tempo = 0;
+        static double cps = 0.00;
 
         public FormCps()
         {
@@ -27,7 +27,35 @@ namespace teste
 
         private void FormCps_Load(object sender, EventArgs e)
         {
-            tempo = tempoi;
+            if (rb10seg.Checked)
+            {
+                tempoi = 10000;
+                tempo = tempoi;
+            }
+            else
+            {
+                if (rb15seg.Checked)
+                {
+                    tempoi = 15000;
+                    tempo = tempoi;
+                }
+                else
+                {
+                    if (rb30seg.Checked)
+                    {
+                        tempoi = 30000;
+                        tempo = tempoi;
+                    }
+                    else
+                    {
+                        if (rb1min.Checked)
+                        {
+                            tempoi = 60000;
+                            tempo = tempoi;
+                        }
+                    }
+                }
+            }
         }
 
         private void rb10seg_CheckedChanged(object sender, EventArgs e)
@@ -35,6 +63,7 @@ namespace teste
             if (rb10seg.Checked)
             {
                 tempoi = 10000;
+                tempo = tempoi;
             }
         }
 
@@ -43,6 +72,7 @@ namespace teste
             if (rb15seg.Checked)
             {
                 tempoi = 15000;
+                tempo = tempoi;
             }
         }
 
@@ -51,6 +81,7 @@ namespace teste
             if (rb30seg.Checked)
             {
                 tempoi = 30000;
+                tempo = tempoi;
             }
         }
 
@@ -59,6 +90,7 @@ namespace teste
             if (rb1min.Checked)
             {
                 tempoi = 60000;
+                tempo = tempoi;
             }
         }
 
@@ -67,13 +99,6 @@ namespace teste
             clicks++;
             lbclicks.Text = clicks.ToString();
             timer.Enabled = true;
-            if (tempo == 0)
-            {
-                cps = clicks / (tempoi / 1000);
-                MessageBox.Show("Sua velocidade de clique é de " + cps + "c/s");
-                tempo--;
-                Close();
-            }
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -82,6 +107,16 @@ namespace teste
             {
                 tempo = tempo - 100;
                 lbtempo.Text = String.Format("{00:000}", tempo);
+            }
+            else
+            {
+                if (tempo == 0)
+                {
+                    timer.Enabled = false;
+                    cps = clicks / (tempoi / 1000);
+                    MessageBox.Show("Sua velocidade de clique foi de " + cps + "c/s");
+                    tempo--;
+                }
             }
         }
     }
