@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace teste
@@ -18,24 +19,13 @@ namespace teste
         {
             InitializeComponent();
         }
+        
         int clicks = 0;
 
         private void button1_Click(object sender, EventArgs e)
         {
             clicks++;
             label1.Text = clicks.ToString();
-            do
-            {
-                Timer();
-            }
-            while (true);
-        }
-        private void Timer()
-        {
-            System.Timers.Timer timer = new System.Timers.Timer();
-
-            timer.Enabled = true;
-            
         }
     }
 }
