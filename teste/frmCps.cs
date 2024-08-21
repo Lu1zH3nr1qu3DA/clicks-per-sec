@@ -10,17 +10,18 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Diagnostics;
 using System.Windows.Forms;
+using teste;
 
-namespace teste
+namespace Cps
 {
-    public partial class FormCps : Form
+    public partial class frmCps : Form
     {
-        static int clicks = 0;
-        static int tempoi = 0;
-        static int tempo = 0;
+        static double clicks = 0.00;
+        static double tempoi = 0.00;
+        static double tempo = 0.00;
         static double cps = 0.00;
 
-        public FormCps()
+        public frmCps()
         {
             InitializeComponent();
         }
@@ -114,10 +115,25 @@ namespace teste
                 {
                     timer.Enabled = false;
                     cps = clicks / (tempoi / 1000);
-                    DialogResult msgresultado = MessageBox.Show("Sua velocidade de clique foi de " + cps + "c/s");
-                    if (msgresultado == DialogResult.OK)
+                    DialogResult msgresultado = MessageBox.Show("Sua velocidade de clique foi de " + Math.Round(cps, 2) + "c/s. Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
+                    if (msgresultado == DialogResult.Yes)
                     {
-                        tempo = 0;
+                        tempo = tempoi;
+                        clicks = 0;
+                        lbclicks.Text = "Número de Cliques";
+                        lbtempo.Text = "Tempo";
+                        frmPontuacao frmpontuacao = new frmPontuacao();
+                        frmpontuacao.Show();
+                    }
+                    else
+                    {
+                        if (msgresultado == DialogResult.No)
+                        {
+                            tempo = tempoi;
+                            clicks = 0;
+                            lbclicks.Text = "Número de Cliques";
+                            lbtempo.Text = "Tempo";
+                        }
                     }
                 }
             }

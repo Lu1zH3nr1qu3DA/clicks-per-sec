@@ -1,6 +1,6 @@
-﻿namespace teste
+﻿namespace Cps
 {
-    partial class FormCps
+    partial class frmCps
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -139,7 +139,7 @@
             this.rb10seg.UseVisualStyleBackColor = true;
             this.rb10seg.CheckedChanged += new System.EventHandler(this.rb10seg_CheckedChanged);
             // 
-            // FormCps
+            // frmCps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -148,7 +148,8 @@
             this.Controls.Add(this.gbduracao);
             this.Controls.Add(this.lbtempo);
             this.Controls.Add(this.lbclicks);
-            this.Name = "FormCps";
+            this.Name = "frmCps";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliques por Segundo";
             this.Load += new System.EventHandler(this.FormCps_Load);
             this.gbduracao.ResumeLayout(false);
