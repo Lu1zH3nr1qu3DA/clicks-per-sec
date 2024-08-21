@@ -1,4 +1,4 @@
-﻿namespace teste
+﻿namespace Frms
 {
     partial class frmPontuacao
     {
@@ -57,6 +57,7 @@
             this.btsalvar.TabIndex = 2;
             this.btsalvar.Text = "Salvar";
             this.btsalvar.UseVisualStyleBackColor = true;
+            this.btsalvar.Click += new System.EventHandler(this.btsalvar_Click);
             // 
             // frmPontuacao
             // 

@@ -4,14 +4,14 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="UserDataConStr" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="UserDataConStr (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.teste.Properties.Settings.GlobalReference.Default.UserDataConStr" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="UserDataConStr" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="UserDataConStr (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Frms.Properties.Settings.GlobalReference.Default.UserDataConStr" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables />
         <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="UserDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="UserDataSet" msprop:Generator_DataSetName="UserDataSet">
+  <xs:element name="UserDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="UserDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="UserDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded" />
     </xs:complexType>

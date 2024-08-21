@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MOD
 {
-    internal class UserMOD
+    public class PontuacaoMOD
     {
         public string Nome { get; set; }
         public double Cps { get; set; }

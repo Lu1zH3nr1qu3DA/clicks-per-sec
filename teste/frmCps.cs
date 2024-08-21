@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Diagnostics;
 using System.Windows.Forms;
-using teste;
+using Frms;
 
 namespace Cps
 {

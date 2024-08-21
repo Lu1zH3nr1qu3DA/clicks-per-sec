@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace teste
+namespace Frms
 {
     public partial class frmPontuacao : Form
     {
         public frmPontuacao()
         {
             InitializeComponent();
+        }
+
+        private void btsalvar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
