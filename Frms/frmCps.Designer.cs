@@ -144,6 +144,7 @@
             // 
             // btplacar
             // 
+            this.btplacar.Enabled = false;
             this.btplacar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btplacar.Location = new System.Drawing.Point(350, 355);
             this.btplacar.Name = "btplacar";
@@ -151,11 +152,13 @@
             this.btplacar.TabIndex = 5;
             this.btplacar.Text = "Placar";
             this.btplacar.UseVisualStyleBackColor = true;
+            this.btplacar.Visible = false;
             this.btplacar.Click += new System.EventHandler(this.btplacar_Click);
             // 
             // dgvplacar
             // 
             this.dgvplacar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvplacar.Enabled = false;
             this.dgvplacar.Location = new System.Drawing.Point(518, 35);
             this.dgvplacar.Name = "dgvplacar";
             this.dgvplacar.Size = new System.Drawing.Size(240, 371);
