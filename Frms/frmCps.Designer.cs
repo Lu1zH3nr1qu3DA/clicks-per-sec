@@ -60,7 +60,7 @@
             this.btclick.Location = new System.Drawing.Point(350, 206);
             this.btclick.Name = "btclick";
             this.btclick.Size = new System.Drawing.Size(101, 39);
-            this.btclick.TabIndex = 1;
+            this.btclick.TabIndex = 0;
             this.btclick.Text = "Clique Aqui";
             this.btclick.UseVisualStyleBackColor = true;
             this.btclick.Click += new System.EventHandler(this.btclick_Click);
@@ -89,7 +89,7 @@
             this.gbduracao.Location = new System.Drawing.Point(35, 151);
             this.gbduracao.Name = "gbduracao";
             this.gbduracao.Size = new System.Drawing.Size(200, 155);
-            this.gbduracao.TabIndex = 4;
+            this.gbduracao.TabIndex = 1;
             this.gbduracao.TabStop = false;
             this.gbduracao.Text = "Duração";
             // 
@@ -149,7 +149,7 @@
             this.btplacar.Location = new System.Drawing.Point(350, 355);
             this.btplacar.Name = "btplacar";
             this.btplacar.Size = new System.Drawing.Size(101, 39);
-            this.btplacar.TabIndex = 5;
+            this.btplacar.TabIndex = 2;
             this.btplacar.Text = "Placar";
             this.btplacar.UseVisualStyleBackColor = true;
             this.btplacar.Visible = false;

@@ -10,9 +10,6 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Diagnostics;
 using System.Windows.Forms;
-using Frms;
-using MOD;
-using BLL;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -31,19 +28,6 @@ namespace Cps
             clicks = 0;
             lbclicks.Text = "Número de Cliques";
             lbtempo.Text = "Tempo";
-        }
-
-        public static void Dados(ref string nome)
-        {
-            PontuacaoMOD pontuacao = new PontuacaoMOD();
-
-            pontuacao.Nome = nome;
-            pontuacao.Cps = cps;
-            pontuacao.Tempo = tempoi;
-            pontuacao.DataPontuacao = DateTime.Now;
-
-            PontuacaoBLL bll = new PontuacaoBLL();
-            bll.Salvar(pontuacao);
         }
 
         public frmCps()
@@ -141,39 +125,10 @@ namespace Cps
                 {
                     timer.Enabled = false;
                     gbduracao.Enabled = true;
-                    cps = clicks / (tempoi / 1000);
-                    DialogResult msgresultado = MessageBox.Show("Sua velocidade de clique foi de " + Math.Round(cps, 2) + "c/s.");// Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
+                    cps = clicks / (tempoi / 1000);;
+                    DialogResult msgresultado = MessageBox.Show("Sua velocidade de clique foi de " + Math.Round(cps, 2) + "c/s.", "Resultado");// Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
                     LimparTela();
-                    //if (msgresultado == DialogResult.Yes)
-                    //{
-                    //    LimparTela();
-
-                    //    //frmPontuacao frmpontuacao = new frmPontuacao();
-                    //    //frmpontuacao.Show();
-                    //}
-                    //else
-                    //{
-                    //    if (msgresultado == DialogResult.No)
-                    //    {
-                    //        LimparTela();
-                    //    }
-                    //}
                 }
-            }
-        }
-
-        private void btplacar_Click(object sender, EventArgs e)
-        {
-            dgvplacar.Visible = true;
-            LoadScores();
-        }
-        private void LoadScores()
-        {
-            PontuacaoBLL bll = new PontuacaoBLL();
-            List<PontuacaoMOD> scores = bll.CarregarPlacar();
-            if (scores != null)
-            {
-                dgvplacar.DataSource = scores;
             }
         }
     }

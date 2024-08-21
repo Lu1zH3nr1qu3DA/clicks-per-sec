@@ -67,19 +67,10 @@
     <Compile Include="frmCps.Designer.cs">
       <DependentUpon>frmCps.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPontuacao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPontuacao.Designer.cs">
-      <DependentUpon>frmPontuacao.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmCps.resx">
       <DependentUpon>frmCps.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPontuacao.resx">
-      <DependentUpon>frmPontuacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -114,16 +105,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{72417275-ff0c-4d38-9307-60dd16912931}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MOD\MOD.csproj">
-      <Project>{a826e1e9-3ce3-4e75-9577-2f0f7aae300d}</Project>
-      <Name>MOD</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
