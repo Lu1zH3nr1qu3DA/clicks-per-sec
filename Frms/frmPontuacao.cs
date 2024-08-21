@@ -25,5 +25,10 @@ namespace Frms
             frmCps.Dados(ref nome);
             Close();
         }
+
+        private void frmPontuacao_Load(object sender, EventArgs e)
+        {
+            btsalvar.Focus();
+        }
     }
 }

@@ -54,7 +54,7 @@
             this.btsalvar.Location = new System.Drawing.Point(204, 152);
             this.btsalvar.Name = "btsalvar";
             this.btsalvar.Size = new System.Drawing.Size(75, 23);
-            this.btsalvar.TabIndex = 2;
+            this.btsalvar.TabIndex = 1;
             this.btsalvar.Text = "Salvar";
             this.btsalvar.UseVisualStyleBackColor = true;
             this.btsalvar.Click += new System.EventHandler(this.btsalvar_Click);
@@ -70,6 +70,7 @@
             this.Name = "frmPontuacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Placar de Pontos";
+            this.Load += new System.EventHandler(this.frmPontuacao_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

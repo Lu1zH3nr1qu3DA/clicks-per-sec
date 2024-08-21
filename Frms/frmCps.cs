@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using Frms;
 using MOD;
 using BLL;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Cps
 {
@@ -41,7 +43,7 @@ namespace Cps
             pontuacao.DataPontuacao = DateTime.Now;
 
             PontuacaoBLL bll = new PontuacaoBLL();
-            bll.Inserir(pontuacao);
+            bll.Salvar(pontuacao);
         }
 
         public frmCps()
@@ -123,6 +125,7 @@ namespace Cps
             clicks++;
             lbclicks.Text = clicks.ToString();
             timer.Enabled = true;
+            gbduracao.Enabled = false;
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -137,6 +140,7 @@ namespace Cps
                 if (tempo == 0)
                 {
                     timer.Enabled = false;
+                    gbduracao.Enabled = true;
                     cps = clicks / (tempoi / 1000);
                     DialogResult msgresultado = MessageBox.Show("Sua velocidade de clique foi de " + Math.Round(cps, 2) + "c/s. Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
                     if (msgresultado == DialogResult.Yes)
@@ -154,6 +158,21 @@ namespace Cps
                         }
                     }
                 }
+            }
+        }
+
+        private void btplacar_Click(object sender, EventArgs e)
+        {
+            dgvplacar.Visible = true;
+            LoadScores();
+        }
+        private void LoadScores()
+        {
+            PontuacaoBLL bll = new PontuacaoBLL();
+            List<PontuacaoMOD> scores = bll.CarregarPlacar();
+            if (scores != null)
+            {
+                dgvplacar.DataSource = scores;
             }
         }
     }

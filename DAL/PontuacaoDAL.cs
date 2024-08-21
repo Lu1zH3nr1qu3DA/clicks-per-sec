@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using MOD;
@@ -10,31 +12,45 @@ namespace DAL
 {
     public class PontuacaoDAL
     {
-        public void Inserir(PontuacaoMOD objDados)
+        static string diretorio = AppDomain.CurrentDomain.BaseDirectory;
+        static string fileName = "pontuacao.dat";
+        static string filePath = Path.Combine(diretorio, fileName);
+
+        public void Salvar(PontuacaoMOD data)
         {
-            //Objeto de conexao com o banco de dados
-            AcessoDados consulta = new AcessoDados();
+            // Cria um formatador binário
+            BinaryFormatter formatter = new BinaryFormatter();
 
-            try
+            // Abre um arquivo para gravação
+            using (FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                consulta.LimparParametros();
+                // Serializa os dados e os escreve no arquivo
+                formatter.Serialize(stream, data);
+            }   
+        }
+        public List<PontuacaoMOD> CarregarPontuacao()
+        {
+            // Cria um formatador binário
+            BinaryFormatter formatter = new BinaryFormatter();
 
-                string SQL = " INSERT INTO Pontuacao (Nome, Cps, Tempo, DataPontuacao) " +
-                             " VALUES (@Nome, @Cps, @Tempo, @DataPontuacao) ";
-
-                //Passagem dos valores para os parametros
-                consulta.AdicionarParametro("@Nome", SqlDbType.VarChar, objDados.Nome);
-                consulta.AdicionarParametro("@Cps", SqlDbType.VarChar, objDados.Cps);
-                consulta.AdicionarParametro("@Tempo", SqlDbType.VarChar, objDados.Tempo);
-                consulta.AdicionarParametro("@DataPontuacao", SqlDbType.DateTime, objDados.DataPontuacao);
-
-                consulta.ExecutaAtualizacao(SQL);
-
-            }
-            catch (Exception ex)
+            // Abre o arquivo para leitura
+            using (FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                throw new Exception("Erro banco de dados: " + ex.Message);
+                // Desserializa os dados do arquivo e os converte de volta para um objeto PontuacaoMOD
+                return (List<PontuacaoMOD>)formatter.Deserialize(stream);
             }
+        }
+        public List<PontuacaoMOD> CarregarPlacar()
+        {
+            if (File.Exists(filePath))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    return (List<PontuacaoMOD>)formatter.Deserialize(stream);
+                }
+            }
+            return new List<PontuacaoMOD>();
         }
     }
 }

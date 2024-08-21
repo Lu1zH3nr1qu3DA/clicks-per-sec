@@ -38,7 +38,10 @@
             this.rb30seg = new System.Windows.Forms.RadioButton();
             this.rb15seg = new System.Windows.Forms.RadioButton();
             this.rb10seg = new System.Windows.Forms.RadioButton();
+            this.btplacar = new System.Windows.Forms.Button();
+            this.dgvplacar = new System.Windows.Forms.DataGridView();
             this.gbduracao.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvplacar)).BeginInit();
             this.SuspendLayout();
             // 
             // lbclicks
@@ -70,7 +73,7 @@
             // 
             this.lbtempo.AutoSize = true;
             this.lbtempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbtempo.Location = new System.Drawing.Point(367, 273);
+            this.lbtempo.Location = new System.Drawing.Point(371, 270);
             this.lbtempo.Name = "lbtempo";
             this.lbtempo.Size = new System.Drawing.Size(58, 20);
             this.lbtempo.TabIndex = 2;
@@ -139,11 +142,33 @@
             this.rb10seg.UseVisualStyleBackColor = true;
             this.rb10seg.CheckedChanged += new System.EventHandler(this.rb10seg_CheckedChanged);
             // 
+            // btplacar
+            // 
+            this.btplacar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btplacar.Location = new System.Drawing.Point(350, 355);
+            this.btplacar.Name = "btplacar";
+            this.btplacar.Size = new System.Drawing.Size(101, 39);
+            this.btplacar.TabIndex = 5;
+            this.btplacar.Text = "Placar";
+            this.btplacar.UseVisualStyleBackColor = true;
+            this.btplacar.Click += new System.EventHandler(this.btplacar_Click);
+            // 
+            // dgvplacar
+            // 
+            this.dgvplacar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvplacar.Location = new System.Drawing.Point(518, 35);
+            this.dgvplacar.Name = "dgvplacar";
+            this.dgvplacar.Size = new System.Drawing.Size(240, 371);
+            this.dgvplacar.TabIndex = 6;
+            this.dgvplacar.Visible = false;
+            // 
             // frmCps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvplacar);
+            this.Controls.Add(this.btplacar);
             this.Controls.Add(this.btclick);
             this.Controls.Add(this.gbduracao);
             this.Controls.Add(this.lbtempo);
@@ -154,6 +179,7 @@
             this.Load += new System.EventHandler(this.FormCps_Load);
             this.gbduracao.ResumeLayout(false);
             this.gbduracao.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvplacar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,6 +196,8 @@
         private System.Windows.Forms.RadioButton rb30seg;
         private System.Windows.Forms.RadioButton rb15seg;
         private System.Windows.Forms.RadioButton rb10seg;
+        private System.Windows.Forms.Button btplacar;
+        private System.Windows.Forms.DataGridView dgvplacar;
     }
 }
 
