@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using Frms;
 using MOD;
+using BLL;
 
 namespace Cps
 {
@@ -21,6 +22,27 @@ namespace Cps
         static double tempoi = 0.00;
         static double tempo = 0.00;
         static double cps = 0.00;
+
+        void LimparTela()
+        {
+            tempo = tempoi;
+            clicks = 0;
+            lbclicks.Text = "Número de Cliques";
+            lbtempo.Text = "Tempo";
+        }
+
+        public static void Dados(ref string nome)
+        {
+            PontuacaoMOD pontuacao = new PontuacaoMOD();
+
+            pontuacao.Nome = nome;
+            pontuacao.Cps = cps;
+            pontuacao.Tempo = tempoi;
+            pontuacao.DataPontuacao = DateTime.Now;
+
+            PontuacaoBLL bll = new PontuacaoBLL();
+            bll.Inserir(pontuacao);
+        }
 
         public frmCps()
         {
@@ -119,24 +141,16 @@ namespace Cps
                     DialogResult msgresultado = MessageBox.Show("Sua velocidade de clique foi de " + Math.Round(cps, 2) + "c/s. Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
                     if (msgresultado == DialogResult.Yes)
                     {
-                        tempo = tempoi;
-                        clicks = 0;
-                        lbclicks.Text = "Número de Cliques";
-                        lbtempo.Text = "Tempo";
+                        LimparTela();
+
                         frmPontuacao frmpontuacao = new frmPontuacao();
-                        PontuacaoMOD pontuacao = new PontuacaoMOD();
-                        pontuacao.Cps = cps;
-                        pontuacao.Tempo = DateTime.Now;
                         frmpontuacao.Show();
                     }
                     else
                     {
                         if (msgresultado == DialogResult.No)
                         {
-                            tempo = tempoi;
-                            clicks = 0;
-                            lbclicks.Text = "Número de Cliques";
-                            lbtempo.Text = "Tempo";
+                            LimparTela();
                         }
                     }
                 }

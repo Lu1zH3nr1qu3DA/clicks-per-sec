@@ -44,5 +44,15 @@
     <Compile Include="PontuacaoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{a25e7ac3-f01e-46fe-80c8-5874342d8f95}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MOD\MOD.csproj">
+      <Project>{a826e1e9-3ce3-4e75-9577-2f0f7aae300d}</Project>
+      <Name>MOD</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

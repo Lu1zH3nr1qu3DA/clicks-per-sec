@@ -10,6 +10,7 @@ namespace MOD
     {
         public string Nome { get; set; }
         public double Cps { get; set; }
-        public DateTime Tempo { get; set; }
+        public double Tempo { get; set; }
+        public DateTime DataPontuacao { get; set; }
     }
 }

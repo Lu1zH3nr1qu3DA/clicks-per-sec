@@ -21,6 +21,9 @@ namespace Frms
 
         private void btsalvar_Click(object sender, EventArgs e)
         {
+            string nome = tbnome.Text;
+            frmCps.Dados(ref nome);
+            Close();
         }
     }
 }

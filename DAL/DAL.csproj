@@ -41,8 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcessoDados.cs" />
+    <Compile Include="Dados.cs" />
     <Compile Include="PontuacaoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MOD\MOD.csproj">
+      <Project>{a826e1e9-3ce3-4e75-9577-2f0f7aae300d}</Project>
+      <Name>MOD</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
