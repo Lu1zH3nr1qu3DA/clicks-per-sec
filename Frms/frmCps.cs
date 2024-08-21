@@ -143,20 +143,21 @@ namespace Cps
                     gbduracao.Enabled = true;
                     cps = clicks / (tempoi / 1000);
                     DialogResult msgresultado = MessageBox.Show("Sua velocidade de clique foi de " + Math.Round(cps, 2) + "c/s.");// Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
-                    if (msgresultado == DialogResult.Yes)
-                    {
-                        LimparTela();
+                    LimparTela();
+                    //if (msgresultado == DialogResult.Yes)
+                    //{
+                    //    LimparTela();
 
-                        //frmPontuacao frmpontuacao = new frmPontuacao();
-                        //frmpontuacao.Show();
-                    }
-                    else
-                    {
-                        if (msgresultado == DialogResult.No)
-                        {
-                            LimparTela();
-                        }
-                    }
+                    //    //frmPontuacao frmpontuacao = new frmPontuacao();
+                    //    //frmpontuacao.Show();
+                    //}
+                    //else
+                    //{
+                    //    if (msgresultado == DialogResult.No)
+                    //    {
+                    //        LimparTela();
+                    //    }
+                    //}
                 }
             }
         }
