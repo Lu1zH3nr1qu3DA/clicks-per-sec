@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Globalization;
 
 namespace Cps
 {
@@ -117,7 +118,7 @@ namespace Cps
             if (tempo > 0)
             {
                 tempo = tempo - 100;
-                lbtempo.Text = String.Format("{00:000}", tempo);
+                lbtempo.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", tempo);
             }
             else
             {
@@ -125,7 +126,7 @@ namespace Cps
                 {
                     timer.Enabled = false;
                     gbduracao.Enabled = true;
-                    cps = clicks / (tempoi / 1000);;
+                    cps = clicks / (tempoi / 1000);
                     DialogResult msgresultado = MessageBox.Show("Sua velocidade de clique foi de " + Math.Round(cps, 2) + "c/s.", "Resultado");// Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
                     LimparTela();
                 }
