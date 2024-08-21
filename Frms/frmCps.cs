@@ -11,6 +11,7 @@ using System.Timers;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Frms;
+using MOD;
 
 namespace Cps
 {
@@ -123,6 +124,9 @@ namespace Cps
                         lbclicks.Text = "Número de Cliques";
                         lbtempo.Text = "Tempo";
                         frmPontuacao frmpontuacao = new frmPontuacao();
+                        PontuacaoMOD pontuacao = new PontuacaoMOD();
+                        pontuacao.Cps = cps;
+                        pontuacao.Tempo = DateTime.Now;
                         frmpontuacao.Show();
                     }
                     else
