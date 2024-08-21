@@ -8,9 +8,9 @@ namespace MOD
 {
     public class PontuacaoMOD
     {
+        public int UserId { get; set; }
         public string Nome { get; set; }
         public double Cps { get; set; }
-        public string Tempo { get; set; }
-        public DateTime Dtpontuacao { get; set; }
+        public DateTime Tempo { get; set; }
     }
 }

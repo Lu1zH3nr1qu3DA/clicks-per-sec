@@ -8,6 +8,5 @@ namespace DAL
 {
     public class PontuacaoDAL
     {
-
     }
 }
