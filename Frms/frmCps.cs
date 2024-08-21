@@ -15,6 +15,7 @@ using MOD;
 using BLL;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Globalization;
 
 namespace Cps
 {
@@ -133,7 +134,7 @@ namespace Cps
             if (tempo > 0)
             {
                 tempo = tempo - 100;
-                lbtempo.Text = String.Format("{00:000}", tempo);
+                lbtempo.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", tempo);
             }
             else
             {
