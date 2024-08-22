@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Frms;
+using MOD;
+using BLL;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Globalization;
@@ -18,10 +21,14 @@ namespace Cps
 {
     public partial class frmCps : Form
     {
+
+        static PontuacaoBLL bll = new PontuacaoBLL();
+        public static List<PontuacaoMOD> listapontuacao = new List<PontuacaoMOD>();
         static double clicks = 0.00;
         static double tempoi = 0.00;
         static double tempo = 0.00;
         static double cps = 0.00;
+        static DateTime datapontuacao = DateTime.MinValue;
 
         void LimparTela()
         {
@@ -31,6 +38,23 @@ namespace Cps
             lbtempo.Text = "Tempo";
         }
 
+        public static void Dados(ref string nome)
+        {
+            datapontuacao = DateTime.Now;
+
+            PontuacaoMOD pontuacao = new PontuacaoMOD(ref nome, ref cps, ref tempoi, ref datapontuacao);
+            listapontuacao.Add(pontuacao);
+            bll.Salvar(listapontuacao);
+        }
+        private void AtualizarPlacar()
+        {
+            lstpontuacao.Items.Clear();
+            foreach (var pontuacao in listapontuacao)
+            {
+                lstpontuacao.Items.Add(pontuacao.ToString());
+            }
+        }
+
         public frmCps()
         {
             InitializeComponent();
@@ -38,6 +62,8 @@ namespace Cps
 
         private void FormCps_Load(object sender, EventArgs e)
         {
+            AtualizarPlacar();
+            bll.CarregarPlacar(ref listapontuacao);
             if (rb10seg.Checked)
             {
                 tempoi = 10000;
@@ -126,9 +152,38 @@ namespace Cps
                 {
                     timer.Enabled = false;
                     gbduracao.Enabled = true;
-                    cps = clicks / (tempoi / 1000);
-                    DialogResult msgresultado = MessageBox.Show("Sua velocidade de clique foi de " + Math.Round(cps, 2) + "c/s.", "Resultado");// Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
-                    LimparTela();
+                    cps = Math.Round(clicks / (tempoi / 1000), 2);
+                    DialogResult msgresultado = MessageBox.Show($"Sua velocidade de clique foi de {cps}c/s. Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
+                    if (msgresultado == DialogResult.Yes)
+                    {
+                        LimparTela();
+
+                        frmPontuacao frmpontuacao = new frmPontuacao();
+                        frmpontuacao.Show();
+                    }
+                    else
+                    {
+                        if (msgresultado == DialogResult.No)
+                        {
+                            LimparTela();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btplacar_Click(object sender, EventArgs e)
+        {
+            AtualizarPlacar();
+            if (lstpontuacao.Visible == false)
+            {
+                lstpontuacao.Visible = true;
+            }
+            else
+            {
+                if (lstpontuacao.Visible == true)
+                {
+                    lstpontuacao.Visible = false;
                 }
             }
         }
