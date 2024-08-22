@@ -36,6 +36,11 @@ namespace Cps
             clicks = 0;
             lbclicks.Text = "Número de Cliques";
             lbtempo.Text = "Tempo";
+
+            lbclickstxt.Visible = true;
+            lbclicks.Visible = false;
+            lbtempotxt.Visible = true;
+            lbtempo.Visible = false;
         }
 
         public static void Dados(ref string nome)
@@ -137,6 +142,11 @@ namespace Cps
             lbclicks.Text = clicks.ToString();
             timer.Enabled = true;
             gbduracao.Enabled = false;
+
+            lbclickstxt.Visible = false;
+            lbclicks.Visible = true;
+            lbtempotxt.Visible = false;
+            lbtempo.Visible = true;
         }
 
         private void timer_Tick(object sender, EventArgs e)
