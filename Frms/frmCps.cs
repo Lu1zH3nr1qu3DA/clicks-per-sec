@@ -28,7 +28,6 @@ namespace Cps
         static double tempoi = 0.00;
         static double tempo = 0.00;
         static double cps = 0.00;
-        static DateTime datapontuacao = DateTime.MinValue;
 
         void LimparTela()
         {
@@ -43,21 +42,22 @@ namespace Cps
             lbtempo.Visible = false;
         }
 
-        public static void Dados(ref string nome)
+        public static void Dados(string nome)
         {
-            datapontuacao = DateTime.Now;
+            PontuacaoMOD pontuacao = new PontuacaoMOD();
+            pontuacao.Nome = nome;
+            pontuacao.Cps = cps;
+            pontuacao.Tempo = tempoi;
+            pontuacao.DataPontuacao = DateTime.Now;
 
-            PontuacaoMOD pontuacao = new PontuacaoMOD(ref nome, ref cps, ref tempoi, ref datapontuacao);
             listapontuacao.Add(pontuacao);
             bll.Salvar(listapontuacao);
         }
         private void AtualizarPlacar()
         {
-            lstpontuacao.Items.Clear();
-            foreach (var pontuacao in listapontuacao)
-            {
-                lstpontuacao.Items.Add(pontuacao.ToString());
-            }
+            listapontuacao = bll.CarregarPlacar(ref listapontuacao);
+            dgvpontuacao.AutoGenerateColumns = true;
+            dgvpontuacao.DataSource = listapontuacao;
         }
 
         public frmCps()
@@ -185,15 +185,15 @@ namespace Cps
         private void btplacar_Click(object sender, EventArgs e)
         {
             AtualizarPlacar();
-            if (lstpontuacao.Visible == false)
+            if (dgvpontuacao.Visible == false)
             {
-                lstpontuacao.Visible = true;
+                dgvpontuacao.Visible = true;
             }
             else
             {
-                if (lstpontuacao.Visible == true)
+                if (dgvpontuacao.Visible == true)
                 {
-                    lstpontuacao.Visible = false;
+                    dgvpontuacao.Visible = false;
                 }
             }
         }

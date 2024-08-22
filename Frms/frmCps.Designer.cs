@@ -39,10 +39,11 @@
             this.rb15seg = new System.Windows.Forms.RadioButton();
             this.rb10seg = new System.Windows.Forms.RadioButton();
             this.btplacar = new System.Windows.Forms.Button();
-            this.lstpontuacao = new System.Windows.Forms.ListBox();
             this.lbclickstxt = new System.Windows.Forms.Label();
             this.lbtempotxt = new System.Windows.Forms.Label();
+            this.dgvpontuacao = new System.Windows.Forms.DataGridView();
             this.gbduracao.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvpontuacao)).BeginInit();
             this.SuspendLayout();
             // 
             // lbclicks
@@ -156,16 +157,6 @@
             this.btplacar.UseVisualStyleBackColor = true;
             this.btplacar.Click += new System.EventHandler(this.btplacar_Click);
             // 
-            // lstpontuacao
-            // 
-            this.lstpontuacao.FormattingEnabled = true;
-            this.lstpontuacao.Location = new System.Drawing.Point(528, 99);
-            this.lstpontuacao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lstpontuacao.Name = "lstpontuacao";
-            this.lstpontuacao.Size = new System.Drawing.Size(250, 316);
-            this.lstpontuacao.TabIndex = 6;
-            this.lstpontuacao.Visible = false;
-            // 
             // lbclickstxt
             // 
             this.lbclickstxt.AutoSize = true;
@@ -186,12 +177,20 @@
             this.lbtempotxt.TabIndex = 8;
             this.lbtempotxt.Text = "Tempo";
             // 
+            // dgvpontuacao
+            // 
+            this.dgvpontuacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvpontuacao.Location = new System.Drawing.Point(528, 99);
+            this.dgvpontuacao.Name = "dgvpontuacao";
+            this.dgvpontuacao.Size = new System.Drawing.Size(250, 316);
+            this.dgvpontuacao.TabIndex = 9;
+            this.dgvpontuacao.Visible = false;
+            // 
             // frmCps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lstpontuacao);
             this.Controls.Add(this.btplacar);
             this.Controls.Add(this.btclick);
             this.Controls.Add(this.gbduracao);
@@ -199,12 +198,14 @@
             this.Controls.Add(this.lbclicks);
             this.Controls.Add(this.lbclickstxt);
             this.Controls.Add(this.lbtempotxt);
+            this.Controls.Add(this.dgvpontuacao);
             this.Name = "frmCps";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliques por Segundo";
             this.Load += new System.EventHandler(this.FormCps_Load);
             this.gbduracao.ResumeLayout(false);
             this.gbduracao.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvpontuacao)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,9 +223,9 @@
         private System.Windows.Forms.RadioButton rb15seg;
         private System.Windows.Forms.RadioButton rb10seg;
         private System.Windows.Forms.Button btplacar;
-        private System.Windows.Forms.ListBox lstpontuacao;
         private System.Windows.Forms.Label lbclickstxt;
         private System.Windows.Forms.Label lbtempotxt;
+        private System.Windows.Forms.DataGridView dgvpontuacao;
     }
 }
 

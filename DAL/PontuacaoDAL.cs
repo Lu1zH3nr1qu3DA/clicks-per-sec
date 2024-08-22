@@ -39,12 +39,12 @@ namespace DAL
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    return listapontuacao = (List<PontuacaoMOD>)formatter.Deserialize(stream);
+                    return (List<PontuacaoMOD>)formatter.Deserialize(stream);
                 }
             }
             else
             {
-                return listapontuacao;
+                return new List<PontuacaoMOD>();
             }
         }
     }
