@@ -162,8 +162,9 @@
             this.lstpontuacao.Location = new System.Drawing.Point(528, 99);
             this.lstpontuacao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lstpontuacao.Name = "lstpontuacao";
-            this.lstpontuacao.Size = new System.Drawing.Size(160, 147);
+            this.lstpontuacao.Size = new System.Drawing.Size(250, 316);
             this.lstpontuacao.TabIndex = 6;
+            this.lstpontuacao.Visible = false;
             // 
             // lbclickstxt
             // 
