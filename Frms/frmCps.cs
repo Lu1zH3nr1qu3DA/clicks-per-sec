@@ -46,18 +46,18 @@ namespace Cps
         {
             PontuacaoMOD pontuacao = new PontuacaoMOD();
             pontuacao.Nome = nome;
-            pontuacao.Cps = cps;
-            pontuacao.Tempo = tempoi;
-            pontuacao.DataPontuacao = DateTime.Now;
+            pontuacao.Cps = cps.ToString();
+            pontuacao.Tempo = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", tempoi);
+            pontuacao.DataPontuacao = DateTime.Now.ToString();
 
             listapontuacao.Add(pontuacao);
             bll.Salvar(listapontuacao);
         }
         private void AtualizarPlacar()
         {
-            listapontuacao = bll.CarregarPlacar(ref listapontuacao);
             dgvpontuacao.AutoGenerateColumns = true;
-            dgvpontuacao.DataSource = listapontuacao;
+            listapontuacao = bll.CarregarPlacar(ref listapontuacao);
+            dgvpontuacao.AutoResizeColumns();
         }
 
         public frmCps()

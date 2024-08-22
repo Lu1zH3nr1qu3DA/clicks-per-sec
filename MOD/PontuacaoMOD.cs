@@ -10,8 +10,8 @@ namespace MOD
     public class PontuacaoMOD
     {
         public string Nome { get; set; }
-        public double Cps { get; set; }
-        public double Tempo { get; set; }
-        public DateTime DataPontuacao { get; set; }
+        public string Cps { get; set; }
+        public string Tempo { get; set; }
+        public string DataPontuacao { get; set; }
     }
 }
