@@ -13,21 +13,15 @@ namespace BLL
     public class PontuacaoBLL
     {
 
-        public void Salvar(PontuacaoMOD pontuacao)
+        public void Salvar(List<PontuacaoMOD> listapontuacao)
         {
             PontuacaoDAL dal = new PontuacaoDAL();
-            dal.Salvar(pontuacao);
+            dal.Salvar(listapontuacao);
         }
-
-        public void CarregarPontuacao()
+        public List<PontuacaoMOD> CarregarPlacar(ref List<PontuacaoMOD> listapontuacao)
         {
             PontuacaoDAL dal = new PontuacaoDAL();
-            dal.CarregarPontuacao();
-        }
-        public List<PontuacaoMOD> CarregarPlacar()
-        {
-            PontuacaoDAL dal = new PontuacaoDAL();
-            return dal.CarregarPlacar();
+            return dal.CarregarPlacar(ref listapontuacao);
         }
     }
 }

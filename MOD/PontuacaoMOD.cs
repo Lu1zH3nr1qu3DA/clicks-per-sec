@@ -13,5 +13,16 @@ namespace MOD
         public double Cps { get; set; }
         public double Tempo { get; set; }
         public DateTime DataPontuacao { get; set; }
+        public PontuacaoMOD(ref string nome, ref double cps, ref double tempoi, ref DateTime dataPontuacao)
+        {
+            Nome = nome;
+            Cps = cps;
+            Tempo = tempoi;
+            DataPontuacao = dataPontuacao;
+        }
+        public override string ToString()
+        {
+            return $"{Nome}, {Cps}, {Tempo}, {DataPontuacao}";
+        }
     }
 }
