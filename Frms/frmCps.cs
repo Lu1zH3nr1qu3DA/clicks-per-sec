@@ -30,6 +30,10 @@ namespace Cps
             clicks = 0;
             lbclicks.Text = "Número de Cliques";
             lbtempo.Text = "Tempo";
+            lbclicks.Visible = false;
+            lbclickstxt.Visible = true;
+            lbtempo.Visible = false;
+            lbtempotxt.Visible = true;
         }
         public frmCps()
         {
@@ -109,6 +113,10 @@ namespace Cps
         {
             clicks++;
             lbclicks.Text = clicks.ToString();
+            lbclicks.Visible = true;
+            lbclickstxt.Visible = false;
+            lbtempo.Visible = true;
+            lbtempotxt.Visible = false;
             timer.Enabled = true;
             gbduracao.Enabled = false;
         }
@@ -119,6 +127,7 @@ namespace Cps
             {
                 tempo = tempo - 100;
                 lbtempo.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", tempo);
+                lbtempo.TextAlign = ContentAlignment.MiddleCenter;
             }
             else
             {
@@ -128,6 +137,10 @@ namespace Cps
                     gbduracao.Enabled = true;
                     cps = Math.Round(clicks / (tempoi / 1000), 2);
                     DialogResult msgresultado = MessageBox.Show($"Sua velocidade de clique foi de {cps}c/s.", "Resultado");
+                    if (msgresultado == DialogResult.OK)
+                    {
+                        LimparTela();
+                    }
                 }
             }
         }

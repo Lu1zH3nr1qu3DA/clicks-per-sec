@@ -38,6 +38,8 @@
             this.rb30seg = new System.Windows.Forms.RadioButton();
             this.rb15seg = new System.Windows.Forms.RadioButton();
             this.rb10seg = new System.Windows.Forms.RadioButton();
+            this.lbclickstxt = new System.Windows.Forms.Label();
+            this.lbtempotxt = new System.Windows.Forms.Label();
             this.gbduracao.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,11 +47,13 @@
             // 
             this.lbclicks.AutoSize = true;
             this.lbclicks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbclicks.Location = new System.Drawing.Point(328, 151);
+            this.lbclicks.Location = new System.Drawing.Point(391, 151);
             this.lbclicks.Name = "lbclicks";
-            this.lbclicks.Size = new System.Drawing.Size(143, 20);
+            this.lbclicks.Size = new System.Drawing.Size(18, 20);
             this.lbclicks.TabIndex = 0;
-            this.lbclicks.Text = "Número de Cliques";
+            this.lbclicks.Text = "0";
+            this.lbclicks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbclicks.Visible = false;
             // 
             // btclick
             // 
@@ -74,7 +78,9 @@
             this.lbtempo.Name = "lbtempo";
             this.lbtempo.Size = new System.Drawing.Size(58, 20);
             this.lbtempo.TabIndex = 2;
-            this.lbtempo.Text = "Tempo";
+            this.lbtempo.Text = "00.000";
+            this.lbtempo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbtempo.Visible = false;
             // 
             // gbduracao
             // 
@@ -139,15 +145,39 @@
             this.rb10seg.UseVisualStyleBackColor = true;
             this.rb10seg.CheckedChanged += new System.EventHandler(this.rb10seg_CheckedChanged);
             // 
+            // lbclickstxt
+            // 
+            this.lbclickstxt.AutoSize = true;
+            this.lbclickstxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbclickstxt.Location = new System.Drawing.Point(329, 151);
+            this.lbclickstxt.Name = "lbclickstxt";
+            this.lbclickstxt.Size = new System.Drawing.Size(143, 20);
+            this.lbclickstxt.TabIndex = 5;
+            this.lbclickstxt.Text = "Número de Cliques";
+            this.lbclickstxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbtempotxt
+            // 
+            this.lbtempotxt.AutoSize = true;
+            this.lbtempotxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbtempotxt.Location = new System.Drawing.Point(371, 270);
+            this.lbtempotxt.Name = "lbtempotxt";
+            this.lbtempotxt.Size = new System.Drawing.Size(58, 20);
+            this.lbtempotxt.TabIndex = 6;
+            this.lbtempotxt.Text = "Tempo";
+            this.lbtempotxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmCps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbclicks);
+            this.Controls.Add(this.lbclickstxt);
             this.Controls.Add(this.btclick);
             this.Controls.Add(this.gbduracao);
             this.Controls.Add(this.lbtempo);
-            this.Controls.Add(this.lbclicks);
+            this.Controls.Add(this.lbtempotxt);
             this.Name = "frmCps";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliques por Segundo";
@@ -170,6 +200,8 @@
         private System.Windows.Forms.RadioButton rb30seg;
         private System.Windows.Forms.RadioButton rb15seg;
         private System.Windows.Forms.RadioButton rb10seg;
+        private System.Windows.Forms.Label lbclickstxt;
+        private System.Windows.Forms.Label lbtempotxt;
     }
 }
 
