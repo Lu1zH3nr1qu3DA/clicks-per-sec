@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lbclicks = new System.Windows.Forms.Label();
+            this.lblclicks = new System.Windows.Forms.Label();
             this.btclick = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.lbtempo = new System.Windows.Forms.Label();
-            this.gbduracao = new System.Windows.Forms.GroupBox();
-            this.rb1min = new System.Windows.Forms.RadioButton();
-            this.rb30seg = new System.Windows.Forms.RadioButton();
-            this.rb15seg = new System.Windows.Forms.RadioButton();
-            this.rb10seg = new System.Windows.Forms.RadioButton();
-            this.lbclickstxt = new System.Windows.Forms.Label();
-            this.lbtempotxt = new System.Windows.Forms.Label();
-            this.gbduracao.SuspendLayout();
+            this.lbltime = new System.Windows.Forms.Label();
+            this.grpduration = new System.Windows.Forms.GroupBox();
+            this.rdo1min = new System.Windows.Forms.RadioButton();
+            this.rdo30sec = new System.Windows.Forms.RadioButton();
+            this.rdo15sec = new System.Windows.Forms.RadioButton();
+            this.rdo10sec = new System.Windows.Forms.RadioButton();
+            this.lblclickstxt = new System.Windows.Forms.Label();
+            this.lbltimetxt = new System.Windows.Forms.Label();
+            this.grpduration.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbclicks
             // 
-            this.lbclicks.AutoSize = true;
-            this.lbclicks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbclicks.Location = new System.Drawing.Point(391, 151);
-            this.lbclicks.Name = "lbclicks";
-            this.lbclicks.Size = new System.Drawing.Size(18, 20);
-            this.lbclicks.TabIndex = 0;
-            this.lbclicks.Text = "0";
-            this.lbclicks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbclicks.Visible = false;
+            this.lblclicks.AutoSize = true;
+            this.lblclicks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblclicks.Location = new System.Drawing.Point(391, 151);
+            this.lblclicks.Name = "lbclicks";
+            this.lblclicks.Size = new System.Drawing.Size(18, 20);
+            this.lblclicks.TabIndex = 0;
+            this.lblclicks.Text = "0";
+            this.lblclicks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblclicks.Visible = false;
             // 
             // btclick
             // 
@@ -64,7 +64,7 @@
             this.btclick.TabIndex = 1;
             this.btclick.Text = "Clique Aqui";
             this.btclick.UseVisualStyleBackColor = true;
-            this.btclick.Click += new System.EventHandler(this.btclick_Click);
+            this.btclick.Click += new System.EventHandler(this.btnclick_Click);
             // 
             // timer
             // 
@@ -72,118 +72,118 @@
             // 
             // lbtempo
             // 
-            this.lbtempo.AutoSize = true;
-            this.lbtempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbtempo.Location = new System.Drawing.Point(371, 270);
-            this.lbtempo.Name = "lbtempo";
-            this.lbtempo.Size = new System.Drawing.Size(58, 20);
-            this.lbtempo.TabIndex = 2;
-            this.lbtempo.Text = "00.000";
-            this.lbtempo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbtempo.Visible = false;
+            this.lbltime.AutoSize = true;
+            this.lbltime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbltime.Location = new System.Drawing.Point(371, 270);
+            this.lbltime.Name = "lbtempo";
+            this.lbltime.Size = new System.Drawing.Size(58, 20);
+            this.lbltime.TabIndex = 2;
+            this.lbltime.Text = "00.000";
+            this.lbltime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbltime.Visible = false;
             // 
             // gbduracao
             // 
-            this.gbduracao.Controls.Add(this.rb1min);
-            this.gbduracao.Controls.Add(this.rb30seg);
-            this.gbduracao.Controls.Add(this.rb15seg);
-            this.gbduracao.Controls.Add(this.rb10seg);
-            this.gbduracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.gbduracao.Location = new System.Drawing.Point(35, 151);
-            this.gbduracao.Name = "gbduracao";
-            this.gbduracao.Size = new System.Drawing.Size(200, 155);
-            this.gbduracao.TabIndex = 4;
-            this.gbduracao.TabStop = false;
-            this.gbduracao.Text = "Duração";
+            this.grpduration.Controls.Add(this.rdo1min);
+            this.grpduration.Controls.Add(this.rdo30sec);
+            this.grpduration.Controls.Add(this.rdo15sec);
+            this.grpduration.Controls.Add(this.rdo10sec);
+            this.grpduration.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.grpduration.Location = new System.Drawing.Point(35, 151);
+            this.grpduration.Name = "gbduracao";
+            this.grpduration.Size = new System.Drawing.Size(200, 155);
+            this.grpduration.TabIndex = 4;
+            this.grpduration.TabStop = false;
+            this.grpduration.Text = "Duração";
             // 
             // rb1min
             // 
-            this.rb1min.AutoSize = true;
-            this.rb1min.Location = new System.Drawing.Point(6, 115);
-            this.rb1min.Name = "rb1min";
-            this.rb1min.Size = new System.Drawing.Size(88, 24);
-            this.rb1min.TabIndex = 3;
-            this.rb1min.TabStop = true;
-            this.rb1min.Text = "1 minuto";
-            this.rb1min.UseVisualStyleBackColor = true;
-            this.rb1min.CheckedChanged += new System.EventHandler(this.rb1min_CheckedChanged);
+            this.rdo1min.AutoSize = true;
+            this.rdo1min.Location = new System.Drawing.Point(6, 115);
+            this.rdo1min.Name = "rb1min";
+            this.rdo1min.Size = new System.Drawing.Size(88, 24);
+            this.rdo1min.TabIndex = 3;
+            this.rdo1min.TabStop = true;
+            this.rdo1min.Text = "1 minuto";
+            this.rdo1min.UseVisualStyleBackColor = true;
+            this.rdo1min.CheckedChanged += new System.EventHandler(this.rdo1min_CheckedChanged);
             // 
             // rb30seg
             // 
-            this.rb30seg.AutoSize = true;
-            this.rb30seg.Location = new System.Drawing.Point(6, 85);
-            this.rb30seg.Name = "rb30seg";
-            this.rb30seg.Size = new System.Drawing.Size(119, 24);
-            this.rb30seg.TabIndex = 2;
-            this.rb30seg.TabStop = true;
-            this.rb30seg.Text = "30 segundos";
-            this.rb30seg.UseVisualStyleBackColor = true;
-            this.rb30seg.CheckedChanged += new System.EventHandler(this.rb30seg_CheckedChanged);
+            this.rdo30sec.AutoSize = true;
+            this.rdo30sec.Location = new System.Drawing.Point(6, 85);
+            this.rdo30sec.Name = "rb30seg";
+            this.rdo30sec.Size = new System.Drawing.Size(119, 24);
+            this.rdo30sec.TabIndex = 2;
+            this.rdo30sec.TabStop = true;
+            this.rdo30sec.Text = "30 segundos";
+            this.rdo30sec.UseVisualStyleBackColor = true;
+            this.rdo30sec.CheckedChanged += new System.EventHandler(this.rdo30sec_CheckedChanged);
             // 
             // rb15seg
             // 
-            this.rb15seg.AutoSize = true;
-            this.rb15seg.Checked = true;
-            this.rb15seg.Location = new System.Drawing.Point(6, 55);
-            this.rb15seg.Name = "rb15seg";
-            this.rb15seg.Size = new System.Drawing.Size(119, 24);
-            this.rb15seg.TabIndex = 1;
-            this.rb15seg.TabStop = true;
-            this.rb15seg.Text = "15 segundos";
-            this.rb15seg.UseVisualStyleBackColor = true;
-            this.rb15seg.CheckedChanged += new System.EventHandler(this.rb15seg_CheckedChanged);
+            this.rdo15sec.AutoSize = true;
+            this.rdo15sec.Checked = true;
+            this.rdo15sec.Location = new System.Drawing.Point(6, 55);
+            this.rdo15sec.Name = "rb15seg";
+            this.rdo15sec.Size = new System.Drawing.Size(119, 24);
+            this.rdo15sec.TabIndex = 1;
+            this.rdo15sec.TabStop = true;
+            this.rdo15sec.Text = "15 segundos";
+            this.rdo15sec.UseVisualStyleBackColor = true;
+            this.rdo15sec.CheckedChanged += new System.EventHandler(this.rdo15sec_CheckedChanged);
             // 
             // rb10seg
             // 
-            this.rb10seg.AutoSize = true;
-            this.rb10seg.Location = new System.Drawing.Point(6, 25);
-            this.rb10seg.Name = "rb10seg";
-            this.rb10seg.Size = new System.Drawing.Size(119, 24);
-            this.rb10seg.TabIndex = 0;
-            this.rb10seg.TabStop = true;
-            this.rb10seg.Text = "10 segundos";
-            this.rb10seg.UseVisualStyleBackColor = true;
-            this.rb10seg.CheckedChanged += new System.EventHandler(this.rb10seg_CheckedChanged);
+            this.rdo10sec.AutoSize = true;
+            this.rdo10sec.Location = new System.Drawing.Point(6, 25);
+            this.rdo10sec.Name = "rb10seg";
+            this.rdo10sec.Size = new System.Drawing.Size(119, 24);
+            this.rdo10sec.TabIndex = 0;
+            this.rdo10sec.TabStop = true;
+            this.rdo10sec.Text = "10 segundos";
+            this.rdo10sec.UseVisualStyleBackColor = true;
+            this.rdo10sec.CheckedChanged += new System.EventHandler(this.rdo10sec_CheckedChanged);
             // 
             // lbclickstxt
             // 
-            this.lbclickstxt.AutoSize = true;
-            this.lbclickstxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbclickstxt.Location = new System.Drawing.Point(329, 151);
-            this.lbclickstxt.Name = "lbclickstxt";
-            this.lbclickstxt.Size = new System.Drawing.Size(143, 20);
-            this.lbclickstxt.TabIndex = 5;
-            this.lbclickstxt.Text = "Número de Cliques";
-            this.lbclickstxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblclickstxt.AutoSize = true;
+            this.lblclickstxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblclickstxt.Location = new System.Drawing.Point(329, 151);
+            this.lblclickstxt.Name = "lbclickstxt";
+            this.lblclickstxt.Size = new System.Drawing.Size(143, 20);
+            this.lblclickstxt.TabIndex = 5;
+            this.lblclickstxt.Text = "Número de Cliques";
+            this.lblclickstxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbtempotxt
             // 
-            this.lbtempotxt.AutoSize = true;
-            this.lbtempotxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbtempotxt.Location = new System.Drawing.Point(371, 270);
-            this.lbtempotxt.Name = "lbtempotxt";
-            this.lbtempotxt.Size = new System.Drawing.Size(58, 20);
-            this.lbtempotxt.TabIndex = 6;
-            this.lbtempotxt.Text = "Tempo";
-            this.lbtempotxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbltimetxt.AutoSize = true;
+            this.lbltimetxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbltimetxt.Location = new System.Drawing.Point(371, 270);
+            this.lbltimetxt.Name = "lbtempotxt";
+            this.lbltimetxt.Size = new System.Drawing.Size(58, 20);
+            this.lbltimetxt.TabIndex = 6;
+            this.lbltimetxt.Text = "Tempo";
+            this.lbltimetxt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmCps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lbclicks);
-            this.Controls.Add(this.lbclickstxt);
+            this.Controls.Add(this.lblclicks);
+            this.Controls.Add(this.lblclickstxt);
             this.Controls.Add(this.btclick);
-            this.Controls.Add(this.gbduracao);
-            this.Controls.Add(this.lbtempo);
-            this.Controls.Add(this.lbtempotxt);
+            this.Controls.Add(this.grpduration);
+            this.Controls.Add(this.lbltime);
+            this.Controls.Add(this.lbltimetxt);
             this.Name = "frmCps";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliques por Segundo";
-            this.Load += new System.EventHandler(this.FormCps_Load);
-            this.gbduracao.ResumeLayout(false);
-            this.gbduracao.PerformLayout();
+            this.Load += new System.EventHandler(this.FrmCps_Load);
+            this.grpduration.ResumeLayout(false);
+            this.grpduration.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,17 +191,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbclicks;
+        private System.Windows.Forms.Label lblclicks;
         private System.Windows.Forms.Button btclick;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.Label lbtempo;
-        private System.Windows.Forms.GroupBox gbduracao;
-        private System.Windows.Forms.RadioButton rb1min;
-        private System.Windows.Forms.RadioButton rb30seg;
-        private System.Windows.Forms.RadioButton rb15seg;
-        private System.Windows.Forms.RadioButton rb10seg;
-        private System.Windows.Forms.Label lbclickstxt;
-        private System.Windows.Forms.Label lbtempotxt;
+        private System.Windows.Forms.Label lbltime;
+        private System.Windows.Forms.GroupBox grpduration;
+        private System.Windows.Forms.RadioButton rdo1min;
+        private System.Windows.Forms.RadioButton rdo30sec;
+        private System.Windows.Forms.RadioButton rdo15sec;
+        private System.Windows.Forms.RadioButton rdo10sec;
+        private System.Windows.Forms.Label lblclickstxt;
+        private System.Windows.Forms.Label lbltimetxt;
     }
 }
 

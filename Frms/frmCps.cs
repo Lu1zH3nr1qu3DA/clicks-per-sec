@@ -19,127 +19,126 @@ namespace Cps
     public partial class frmCps : Form
     {
         static double clicks = 0.00;
-        static double tempoi = 0.00;
-        static double tempo = 0.00;
+        static double itime = 0.00;
+        static double time = 0.00;
         static double cps = 0.00;
-        static DateTime datapontuacao = DateTime.MinValue;
 
-        void LimparTela()
+        void ClearScreen()
         {
-            tempo = tempoi;
+            time = itime;
             clicks = 0;
-            lbclicks.Text = "Número de Cliques";
-            lbtempo.Text = "Tempo";
-            lbclicks.Visible = false;
-            lbclickstxt.Visible = true;
-            lbtempo.Visible = false;
-            lbtempotxt.Visible = true;
+            lblclicks.Text = "Número de Cliques";
+            lbltime.Text = "Tempo";
+            lblclicks.Visible = false;
+            lblclickstxt.Visible = true;
+            lbltime.Visible = false;
+            lbltimetxt.Visible = true;
         }
         public frmCps()
         {
             InitializeComponent();
         }
 
-        private void FormCps_Load(object sender, EventArgs e)
+        private void FrmCps_Load(object sender, EventArgs e)
         {
-            if (rb10seg.Checked)
+            if (rdo10sec.Checked)
             {
-                tempoi = 10000;
-                tempo = tempoi;
+                itime = 10000;
+                time = itime;
             }
             else
             {
-                if (rb15seg.Checked)
+                if (rdo15sec.Checked)
                 {
-                    tempoi = 15000;
-                    tempo = tempoi;
+                    itime = 15000;
+                    time = itime;
                 }
                 else
                 {
-                    if (rb30seg.Checked)
+                    if (rdo30sec.Checked)
                     {
-                        tempoi = 30000;
-                        tempo = tempoi;
+                        itime = 30000;
+                        time = itime;
                     }
                     else
                     {
-                        if (rb1min.Checked)
+                        if (rdo1min.Checked)
                         {
-                            tempoi = 60000;
-                            tempo = tempoi;
+                            itime = 60000;
+                            time = itime;
                         }
                     }
                 }
             }
         }
 
-        private void rb10seg_CheckedChanged(object sender, EventArgs e)
+        private void rdo10sec_CheckedChanged(object sender, EventArgs e)
         {
-            if (rb10seg.Checked)
+            if (rdo10sec.Checked)
             {
-                tempoi = 10000;
-                tempo = tempoi;
+                itime = 10000;
+                time = itime;
             }
         }
 
-        private void rb15seg_CheckedChanged(object sender, EventArgs e)
+        private void rdo15sec_CheckedChanged(object sender, EventArgs e)
         {
-            if (rb15seg.Checked)
+            if (rdo15sec.Checked)
             {
-                tempoi = 15000;
-                tempo = tempoi;
+                itime = 15000;
+                time = itime;
             }
         }
 
-        private void rb30seg_CheckedChanged(object sender, EventArgs e)
+        private void rdo30sec_CheckedChanged(object sender, EventArgs e)
         {
-            if (rb30seg.Checked)
+            if (rdo30sec.Checked)
             {
-                tempoi = 30000;
-                tempo = tempoi;
+                itime = 30000;
+                time = itime;
             }
         }
 
-        private void rb1min_CheckedChanged(object sender, EventArgs e)
+        private void rdo1min_CheckedChanged(object sender, EventArgs e)
         {
-            if (rb1min.Checked)
+            if (rdo1min.Checked)
             {
-                tempoi = 60000;
-                tempo = tempoi;
+                itime = 60000;
+                time = itime;
             }
         }
 
-        private void btclick_Click(object sender, EventArgs e)
+        private void btnclick_Click(object sender, EventArgs e)
         {
             clicks++;
-            lbclicks.Text = clicks.ToString();
-            lbclicks.Visible = true;
-            lbclickstxt.Visible = false;
-            lbtempo.Visible = true;
-            lbtempotxt.Visible = false;
+            lblclicks.Text = clicks.ToString();
+            lblclicks.Visible = true;
+            lblclickstxt.Visible = false;
+            lbltime.Visible = true;
+            lbltimetxt.Visible = false;
             timer.Enabled = true;
-            gbduracao.Enabled = false;
+            grpduration.Enabled = false;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (tempo > 0)
+            if (time > 0)
             {
-                tempo = tempo - 100;
-                lbtempo.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", tempo);
-                lbtempo.TextAlign = ContentAlignment.MiddleCenter;
+                time = time - 100;
+                lbltime.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", time);
+                lbltime.TextAlign = ContentAlignment.MiddleCenter;
             }
             else
             {
-                if (tempo == 0)
+                if (time == 0)
                 {
                     timer.Enabled = false;
-                    gbduracao.Enabled = true;
-                    cps = Math.Round(clicks / (tempoi / 1000), 2);
-                    DialogResult msgresultado = MessageBox.Show($"Sua velocidade de clique foi de {cps}c/s.", "Resultado");
-                    if (msgresultado == DialogResult.OK)
+                    grpduration.Enabled = true;
+                    cps = Math.Round(clicks / (itime / 1000), 2);
+                    DialogResult msgresult = MessageBox.Show($"Sua velocidade de clique foi de {cps}c/s.", "Resultado");
+                    if (msgresult == DialogResult.OK)
                     {
-                        LimparTela();
+                        ClearScreen();
                     }
                 }
             }
