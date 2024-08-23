@@ -180,9 +180,10 @@
             // dgvpontuacao
             // 
             this.dgvpontuacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvpontuacao.Location = new System.Drawing.Point(528, 99);
+            this.dgvpontuacao.Enabled = false;
+            this.dgvpontuacao.Location = new System.Drawing.Point(24, 48);
             this.dgvpontuacao.Name = "dgvpontuacao";
-            this.dgvpontuacao.Size = new System.Drawing.Size(250, 316);
+            this.dgvpontuacao.Size = new System.Drawing.Size(754, 258);
             this.dgvpontuacao.TabIndex = 9;
             this.dgvpontuacao.Visible = false;
             // 
@@ -191,6 +192,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvpontuacao);
             this.Controls.Add(this.btplacar);
             this.Controls.Add(this.btclick);
             this.Controls.Add(this.gbduracao);
@@ -198,7 +200,6 @@
             this.Controls.Add(this.lbclicks);
             this.Controls.Add(this.lbclickstxt);
             this.Controls.Add(this.lbtempotxt);
-            this.Controls.Add(this.dgvpontuacao);
             this.Name = "frmCps";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliques por Segundo";

@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
-using System.Diagnostics;
-using System.Windows.Forms;
+﻿using BLL;
 using Frms;
 using MOD;
-using BLL;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace Cps
 {
@@ -23,7 +12,9 @@ namespace Cps
     {
 
         static PontuacaoBLL bll = new PontuacaoBLL();
+
         public static List<PontuacaoMOD> listapontuacao = new List<PontuacaoMOD>();
+
         static double clicks = 0.00;
         static double tempoi = 0.00;
         static double tempo = 0.00;
@@ -49,15 +40,24 @@ namespace Cps
             pontuacao.Cps = cps.ToString();
             pontuacao.Tempo = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", tempoi);
             pontuacao.DataPontuacao = DateTime.Now.ToString();
-
             listapontuacao.Add(pontuacao);
             bll.Salvar(listapontuacao);
         }
-        private void AtualizarPlacar()
+        public void CarregarPlacar()
         {
-            dgvpontuacao.AutoGenerateColumns = true;
             listapontuacao = bll.CarregarPlacar(ref listapontuacao);
+            dgvpontuacao.DataSource = listapontuacao;
+            dgvpontuacao.AutoGenerateColumns = true;
+            dgvpontuacao.Columns["Nome"].HeaderText = "Nome";
+            dgvpontuacao.Columns["Cps"].HeaderText = "c/s";
+            dgvpontuacao.Columns["Tempo"].HeaderText = "Duração (s)";
+            dgvpontuacao.Columns["DataPontuacao"].HeaderText = "Data";
             dgvpontuacao.AutoResizeColumns();
+        }
+        public void AtualizarPlacar()
+        {
+            CarregarPlacar();
+            dgvpontuacao.Refresh();
         }
 
         public frmCps()
@@ -67,8 +67,6 @@ namespace Cps
 
         private void FormCps_Load(object sender, EventArgs e)
         {
-            AtualizarPlacar();
-            bll.CarregarPlacar(ref listapontuacao);
             if (rb10seg.Checked)
             {
                 tempoi = 10000;
@@ -142,7 +140,8 @@ namespace Cps
             lbclicks.Text = clicks.ToString();
             timer.Enabled = true;
             gbduracao.Enabled = false;
-
+            btplacar.Enabled = false;
+            dgvpontuacao.Enabled = false;
             lbclickstxt.Visible = false;
             lbclicks.Visible = true;
             lbtempotxt.Visible = false;
@@ -162,6 +161,8 @@ namespace Cps
                 {
                     timer.Enabled = false;
                     gbduracao.Enabled = true;
+                    btplacar.Enabled = true;
+                    dgvpontuacao.Enabled = true;
                     cps = Math.Round(clicks / (tempoi / 1000), 2);
                     DialogResult msgresultado = MessageBox.Show($"Sua velocidade de clique foi de {cps}c/s. Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
                     if (msgresultado == DialogResult.Yes)
@@ -184,16 +185,18 @@ namespace Cps
 
         private void btplacar_Click(object sender, EventArgs e)
         {
-            AtualizarPlacar();
+            CarregarPlacar();
             if (dgvpontuacao.Visible == false)
             {
                 dgvpontuacao.Visible = true;
+                dgvpontuacao.Enabled = true;
             }
             else
             {
                 if (dgvpontuacao.Visible == true)
                 {
                     dgvpontuacao.Visible = false;
+                    dgvpontuacao.Enabled = false;
                 }
             }
         }
