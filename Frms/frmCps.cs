@@ -10,8 +10,7 @@ namespace Cps
 {
     public partial class frmCps : Form
     {
-
-        static ScoreLogic logic = new ScoreLogic();
+        static ScoreLogic score = new ScoreLogic();
 
         public static List<ScoreModel> scorelist = new List<ScoreModel>();
 
@@ -20,7 +19,7 @@ namespace Cps
         static double time = 0.00;
         static double cps = 0.00;
 
-        void ClearScreen()
+        void ResetScreen()
         {
             time = itime;
             clicks = 0;
@@ -28,36 +27,37 @@ namespace Cps
             lbltime.Text = "Tempo";
 
             lblclickstxt.Visible = true;
-            lblclicks.Visible = false;
             lbltimetxt.Visible = true;
+            lblclicks.Visible = false;
             lbltime.Visible = false;
         }
+        private void LoadScores()
+        {
+            scorelist = score.LoadScores(ref scorelist);
 
-        public static void SaveData(string name)
-        {
-            ScoreModel score = new ScoreModel();
-            score.Name = name;
-            score.Cps = cps.ToString();
-            score.Time = Math.Round(Convert.ToDouble(String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", itime)), 0).ToString();
-            score.ScoreDt = DateTime.Now.ToString();
-            scorelist.Add(score);
-            logic.Save(scorelist);
-        }
-        public void LoadScores()
-        {
-            scorelist = logic.LoadScores(ref scorelist);
             dgvscores.DataSource = scorelist;
             dgvscores.AutoGenerateColumns = true;
             dgvscores.Columns["Name"].HeaderText = "Nome";
+            dgvscores.Columns["Name"].Width = 256;
             dgvscores.Columns["Cps"].HeaderText = "c/s";
+            dgvscores.Columns["Cps"].Width = 64;
             dgvscores.Columns["Time"].HeaderText = "Duração (s)";
+            dgvscores.Columns["Time"].Width = 64;
             dgvscores.Columns["ScoreDt"].HeaderText = "Data";
-            dgvscores.AutoResizeColumns();
-        }
-        public void UpdateScores()
-        {
-            LoadScores();
+            dgvscores.Columns["ScoreDt"].Width = 128;
             dgvscores.Refresh();
+        }
+        public static void SaveData(string name)
+        {
+            ScoreModel score = new ScoreModel();
+
+            score.Name = name;
+            score.Cps = cps.ToString();
+            score.Time = (itime / 1000).ToString();
+            score.ScoreDt = DateTime.Now.ToString();
+            
+            scorelist.Add(score);
+            frmCps.score.Save(scorelist);
         }
 
         public frmCps()
@@ -67,6 +67,7 @@ namespace Cps
 
         private void FrmCps_Load(object sender, EventArgs e)
         {
+            LoadScores();
             if (rdo10sec.Checked)
             {
                 itime = 10000;
@@ -106,7 +107,6 @@ namespace Cps
                 time = itime;
             }
         }
-
         private void rdo15sec_CheckedChanged(object sender, EventArgs e)
         {
             if (rdo15sec.Checked)
@@ -115,7 +115,6 @@ namespace Cps
                 time = itime;
             }
         }
-
         private void rdo30sec_CheckedChanged(object sender, EventArgs e)
         {
             if (rdo30sec.Checked)
@@ -124,7 +123,6 @@ namespace Cps
                 time = itime;
             }
         }
-
         private void rdo1min_CheckedChanged(object sender, EventArgs e)
         {
             if (rdo1min.Checked)
@@ -138,14 +136,17 @@ namespace Cps
         {
             clicks++;
             lblclicks.Text = clicks.ToString();
-            timer.Enabled = true;
-            grpduration.Enabled = false;
-            btnscores.Enabled = false;
-            dgvscores.Enabled = false;
-            lblclickstxt.Visible = false;
-            lblclicks.Visible = true;
-            lbltimetxt.Visible = false;
-            lbltime.Visible = true;
+            if (clicks <= 1)
+            {
+                timer.Enabled = true;
+                grpduration.Enabled = false;
+                btnscores.Enabled = false;
+                dgvscores.Enabled = false;
+                lblclickstxt.Visible = false;
+                lblclicks.Visible = true;
+                lbltimetxt.Visible = false;
+                lbltime.Visible = true;
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -167,7 +168,7 @@ namespace Cps
                     DialogResult msgresult = MessageBox.Show($"Sua velocidade de clique foi de {cps}c/s. Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
                     if (msgresult == DialogResult.Yes)
                     {
-                        ClearScreen();
+                        ResetScreen();
 
                         frmScore frmscore = new frmScore();
                         frmscore.Show();
@@ -176,7 +177,7 @@ namespace Cps
                     {
                         if (msgresult == DialogResult.No)
                         {
-                            ClearScreen();
+                            ResetScreen();
                         }
                     }
                 }
