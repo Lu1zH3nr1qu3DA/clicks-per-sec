@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
-using System.Diagnostics;
-using System.Windows.Forms;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace Cps
 {
@@ -71,7 +60,6 @@ namespace Cps
                 }
             }
         }
-
         private void rdo10sec_CheckedChanged(object sender, EventArgs e)
         {
             if (rdo10sec.Checked)
@@ -80,7 +68,6 @@ namespace Cps
                 time = itime;
             }
         }
-
         private void rdo15sec_CheckedChanged(object sender, EventArgs e)
         {
             if (rdo15sec.Checked)
@@ -89,7 +76,6 @@ namespace Cps
                 time = itime;
             }
         }
-
         private void rdo30sec_CheckedChanged(object sender, EventArgs e)
         {
             if (rdo30sec.Checked)
@@ -98,7 +84,6 @@ namespace Cps
                 time = itime;
             }
         }
-
         private void rdo1min_CheckedChanged(object sender, EventArgs e)
         {
             if (rdo1min.Checked)
