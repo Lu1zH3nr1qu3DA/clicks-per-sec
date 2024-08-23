@@ -63,7 +63,7 @@
             this.btclick.Location = new System.Drawing.Point(350, 206);
             this.btclick.Name = "btclick";
             this.btclick.Size = new System.Drawing.Size(101, 39);
-            this.btclick.TabIndex = 1;
+            this.btclick.TabIndex = 0;
             this.btclick.Text = "Clique Aqui";
             this.btclick.UseVisualStyleBackColor = true;
             this.btclick.Click += new System.EventHandler(this.btclick_Click);
@@ -79,7 +79,7 @@
             this.lbtempo.Location = new System.Drawing.Point(371, 270);
             this.lbtempo.Name = "lbtempo";
             this.lbtempo.Size = new System.Drawing.Size(58, 20);
-            this.lbtempo.TabIndex = 2;
+            this.lbtempo.TabIndex = 0;
             this.lbtempo.Text = "00.000";
             this.lbtempo.Visible = false;
             // 
@@ -93,7 +93,7 @@
             this.gbduracao.Location = new System.Drawing.Point(35, 151);
             this.gbduracao.Name = "gbduracao";
             this.gbduracao.Size = new System.Drawing.Size(200, 155);
-            this.gbduracao.TabIndex = 4;
+            this.gbduracao.TabIndex = 1;
             this.gbduracao.TabStop = false;
             this.gbduracao.Text = "Duração";
             // 
@@ -103,7 +103,7 @@
             this.rb1min.Location = new System.Drawing.Point(6, 115);
             this.rb1min.Name = "rb1min";
             this.rb1min.Size = new System.Drawing.Size(88, 24);
-            this.rb1min.TabIndex = 3;
+            this.rb1min.TabIndex = 5;
             this.rb1min.TabStop = true;
             this.rb1min.Text = "1 minuto";
             this.rb1min.UseVisualStyleBackColor = true;
@@ -115,7 +115,7 @@
             this.rb30seg.Location = new System.Drawing.Point(6, 85);
             this.rb30seg.Name = "rb30seg";
             this.rb30seg.Size = new System.Drawing.Size(119, 24);
-            this.rb30seg.TabIndex = 2;
+            this.rb30seg.TabIndex = 4;
             this.rb30seg.TabStop = true;
             this.rb30seg.Text = "30 segundos";
             this.rb30seg.UseVisualStyleBackColor = true;
@@ -128,7 +128,7 @@
             this.rb15seg.Location = new System.Drawing.Point(6, 55);
             this.rb15seg.Name = "rb15seg";
             this.rb15seg.Size = new System.Drawing.Size(119, 24);
-            this.rb15seg.TabIndex = 1;
+            this.rb15seg.TabIndex = 3;
             this.rb15seg.TabStop = true;
             this.rb15seg.Text = "15 segundos";
             this.rb15seg.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             this.rb10seg.Location = new System.Drawing.Point(6, 25);
             this.rb10seg.Name = "rb10seg";
             this.rb10seg.Size = new System.Drawing.Size(119, 24);
-            this.rb10seg.TabIndex = 0;
+            this.rb10seg.TabIndex = 2;
             this.rb10seg.TabStop = true;
             this.rb10seg.Text = "10 segundos";
             this.rb10seg.UseVisualStyleBackColor = true;
@@ -152,7 +152,7 @@
             this.btplacar.Location = new System.Drawing.Point(350, 355);
             this.btplacar.Name = "btplacar";
             this.btplacar.Size = new System.Drawing.Size(101, 39);
-            this.btplacar.TabIndex = 5;
+            this.btplacar.TabIndex = 6;
             this.btplacar.Text = "Placar";
             this.btplacar.UseVisualStyleBackColor = true;
             this.btplacar.Click += new System.EventHandler(this.btplacar_Click);
@@ -164,7 +164,7 @@
             this.lbclickstxt.Location = new System.Drawing.Point(329, 151);
             this.lbclickstxt.Name = "lbclickstxt";
             this.lbclickstxt.Size = new System.Drawing.Size(143, 20);
-            this.lbclickstxt.TabIndex = 7;
+            this.lbclickstxt.TabIndex = 0;
             this.lbclickstxt.Text = "Número de Cliques";
             // 
             // lbtempotxt
@@ -174,17 +174,17 @@
             this.lbtempotxt.Location = new System.Drawing.Point(371, 270);
             this.lbtempotxt.Name = "lbtempotxt";
             this.lbtempotxt.Size = new System.Drawing.Size(58, 20);
-            this.lbtempotxt.TabIndex = 8;
+            this.lbtempotxt.TabIndex = 0;
             this.lbtempotxt.Text = "Tempo";
             // 
             // dgvpontuacao
             // 
             this.dgvpontuacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvpontuacao.Enabled = false;
-            this.dgvpontuacao.Location = new System.Drawing.Point(24, 48);
+            this.dgvpontuacao.Location = new System.Drawing.Point(545, 124);
             this.dgvpontuacao.Name = "dgvpontuacao";
-            this.dgvpontuacao.Size = new System.Drawing.Size(754, 258);
-            this.dgvpontuacao.TabIndex = 9;
+            this.dgvpontuacao.Size = new System.Drawing.Size(233, 278);
+            this.dgvpontuacao.TabIndex = 7;
             this.dgvpontuacao.Visible = false;
             // 
             // frmCps
@@ -196,9 +196,9 @@
             this.Controls.Add(this.btplacar);
             this.Controls.Add(this.btclick);
             this.Controls.Add(this.gbduracao);
-            this.Controls.Add(this.lbtempo);
             this.Controls.Add(this.lbclicks);
             this.Controls.Add(this.lbclickstxt);
+            this.Controls.Add(this.lbtempo);
             this.Controls.Add(this.lbtempotxt);
             this.Name = "frmCps";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
