@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{72417275-FF0C-4D38-9307-60DD16912931}</ProjectGuid>
+    <ProjectGuid>{A25E7AC3-F01E-46FE-80C8-5874342D8F95}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BLL</RootNamespace>
-    <AssemblyName>BLL</AssemblyName>
+    <RootNamespace>DataAcess</RootNamespace>
+    <AssemblyName>DataAcess</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,17 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PontuacaoBLL.cs" />
+    <Compile Include="ScoreAcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{a25e7ac3-f01e-46fe-80c8-5874342d8f95}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MOD\MOD.csproj">
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{a826e1e9-3ce3-4e75-9577-2f0f7aae300d}</Project>
-      <Name>MOD</Name>
+      <Name>DataModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

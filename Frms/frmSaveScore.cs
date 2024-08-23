@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Frms
 {
-    public partial class frmPontuacao : Form
+    public partial class frmScore : Form
     {
-        public frmPontuacao()
+        public frmScore()
         {
             InitializeComponent();
         }
@@ -14,7 +14,7 @@ namespace Frms
         private void btsalvar_Click(object sender, EventArgs e)
         {
             string nome = tbnome.Text;
-            frmCps.Dados(nome);
+            frmCps.SaveData(nome);
             Close();
         }
 

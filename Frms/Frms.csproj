@@ -67,19 +67,19 @@
     <Compile Include="frmCps.Designer.cs">
       <DependentUpon>frmCps.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPontuacao.cs">
+    <Compile Include="frmSaveScore.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPontuacao.Designer.cs">
-      <DependentUpon>frmPontuacao.cs</DependentUpon>
+    <Compile Include="frmSaveScore.Designer.cs">
+      <DependentUpon>frmSaveScore.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmCps.resx">
       <DependentUpon>frmCps.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPontuacao.resx">
-      <DependentUpon>frmPontuacao.cs</DependentUpon>
+    <EmbeddedResource Include="frmSaveScore.resx">
+      <DependentUpon>frmSaveScore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -116,13 +116,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
+    <ProjectReference Include="..\DataLogic\DataLogic.csproj">
       <Project>{72417275-ff0c-4d38-9307-60dd16912931}</Project>
-      <Name>BLL</Name>
+      <Name>DataLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MOD\MOD.csproj">
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{a826e1e9-3ce3-4e75-9577-2f0f7aae300d}</Project>
-      <Name>MOD</Name>
+      <Name>DataModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

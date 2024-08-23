@@ -1,6 +1,6 @@
-﻿using BLL;
+﻿using DataLogic;
 using Frms;
-using MOD;
+using DataModel;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,53 +11,53 @@ namespace Cps
     public partial class frmCps : Form
     {
 
-        static PontuacaoBLL bll = new PontuacaoBLL();
+        static ScoreLogic logic = new ScoreLogic();
 
-        public static List<PontuacaoMOD> listapontuacao = new List<PontuacaoMOD>();
+        public static List<ScoreModel> scorelist = new List<ScoreModel>();
 
         static double clicks = 0.00;
-        static double tempoi = 0.00;
-        static double tempo = 0.00;
+        static double itime = 0.00;
+        static double time = 0.00;
         static double cps = 0.00;
 
-        void LimparTela()
+        void ClearScreen()
         {
-            tempo = tempoi;
+            time = itime;
             clicks = 0;
-            lbclicks.Text = "Número de Cliques";
-            lbtempo.Text = "Tempo";
+            lblclicks.Text = "Número de Cliques";
+            lbltime.Text = "Tempo";
 
-            lbclickstxt.Visible = true;
-            lbclicks.Visible = false;
-            lbtempotxt.Visible = true;
-            lbtempo.Visible = false;
+            lblclickstxt.Visible = true;
+            lblclicks.Visible = false;
+            lbltimetxt.Visible = true;
+            lbltime.Visible = false;
         }
 
-        public static void Dados(string nome)
+        public static void SaveData(string name)
         {
-            PontuacaoMOD pontuacao = new PontuacaoMOD();
-            pontuacao.Nome = nome;
-            pontuacao.Cps = cps.ToString();
-            pontuacao.Tempo = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", tempoi);
-            pontuacao.DataPontuacao = DateTime.Now.ToString();
-            listapontuacao.Add(pontuacao);
-            bll.Salvar(listapontuacao);
+            ScoreModel score = new ScoreModel();
+            score.Name = name;
+            score.Cps = cps.ToString();
+            score.Time = Math.Round(Convert.ToDouble(String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", itime)), 0).ToString();
+            score.ScoreDt = DateTime.Now.ToString();
+            scorelist.Add(score);
+            logic.Save(scorelist);
         }
-        public void CarregarPlacar()
+        public void LoadScores()
         {
-            listapontuacao = bll.CarregarPlacar(ref listapontuacao);
-            dgvpontuacao.DataSource = listapontuacao;
-            dgvpontuacao.AutoGenerateColumns = true;
-            dgvpontuacao.Columns["Nome"].HeaderText = "Nome";
-            dgvpontuacao.Columns["Cps"].HeaderText = "c/s";
-            dgvpontuacao.Columns["Tempo"].HeaderText = "Duração (s)";
-            dgvpontuacao.Columns["DataPontuacao"].HeaderText = "Data";
-            dgvpontuacao.AutoResizeColumns();
+            scorelist = logic.LoadScores(ref scorelist);
+            dgvscores.DataSource = scorelist;
+            dgvscores.AutoGenerateColumns = true;
+            dgvscores.Columns["Name"].HeaderText = "Nome";
+            dgvscores.Columns["Cps"].HeaderText = "c/s";
+            dgvscores.Columns["Time"].HeaderText = "Duração (s)";
+            dgvscores.Columns["ScoreDt"].HeaderText = "Data";
+            dgvscores.AutoResizeColumns();
         }
-        public void AtualizarPlacar()
+        public void UpdateScores()
         {
-            CarregarPlacar();
-            dgvpontuacao.Refresh();
+            LoadScores();
+            dgvscores.Refresh();
         }
 
         public frmCps()
@@ -65,138 +65,138 @@ namespace Cps
             InitializeComponent();
         }
 
-        private void FormCps_Load(object sender, EventArgs e)
+        private void FrmCps_Load(object sender, EventArgs e)
         {
-            if (rb10seg.Checked)
+            if (rdo10sec.Checked)
             {
-                tempoi = 10000;
-                tempo = tempoi;
+                itime = 10000;
+                time = itime;
             }
             else
             {
-                if (rb15seg.Checked)
+                if (rdo15sec.Checked)
                 {
-                    tempoi = 15000;
-                    tempo = tempoi;
+                    itime = 15000;
+                    time = itime;
                 }
                 else
                 {
-                    if (rb30seg.Checked)
+                    if (rdo30sec.Checked)
                     {
-                        tempoi = 30000;
-                        tempo = tempoi;
+                        itime = 30000;
+                        time = itime;
                     }
                     else
                     {
-                        if (rb1min.Checked)
+                        if (rdo1min.Checked)
                         {
-                            tempoi = 60000;
-                            tempo = tempoi;
+                            itime = 60000;
+                            time = itime;
                         }
                     }
                 }
             }
         }
 
-        private void rb10seg_CheckedChanged(object sender, EventArgs e)
+        private void rdo10sec_CheckedChanged(object sender, EventArgs e)
         {
-            if (rb10seg.Checked)
+            if (rdo10sec.Checked)
             {
-                tempoi = 10000;
-                tempo = tempoi;
+                itime = 10000;
+                time = itime;
             }
         }
 
-        private void rb15seg_CheckedChanged(object sender, EventArgs e)
+        private void rdo15sec_CheckedChanged(object sender, EventArgs e)
         {
-            if (rb15seg.Checked)
+            if (rdo15sec.Checked)
             {
-                tempoi = 15000;
-                tempo = tempoi;
+                itime = 15000;
+                time = itime;
             }
         }
 
-        private void rb30seg_CheckedChanged(object sender, EventArgs e)
+        private void rdo30sec_CheckedChanged(object sender, EventArgs e)
         {
-            if (rb30seg.Checked)
+            if (rdo30sec.Checked)
             {
-                tempoi = 30000;
-                tempo = tempoi;
+                itime = 30000;
+                time = itime;
             }
         }
 
-        private void rb1min_CheckedChanged(object sender, EventArgs e)
+        private void rdo1min_CheckedChanged(object sender, EventArgs e)
         {
-            if (rb1min.Checked)
+            if (rdo1min.Checked)
             {
-                tempoi = 60000;
-                tempo = tempoi;
+                itime = 60000;
+                time = itime;
             }
         }
 
-        private void btclick_Click(object sender, EventArgs e)
+        private void btnclick_Click(object sender, EventArgs e)
         {
             clicks++;
-            lbclicks.Text = clicks.ToString();
+            lblclicks.Text = clicks.ToString();
             timer.Enabled = true;
-            gbduracao.Enabled = false;
-            btplacar.Enabled = false;
-            dgvpontuacao.Enabled = false;
-            lbclickstxt.Visible = false;
-            lbclicks.Visible = true;
-            lbtempotxt.Visible = false;
-            lbtempo.Visible = true;
+            grpduration.Enabled = false;
+            btnscores.Enabled = false;
+            dgvscores.Enabled = false;
+            lblclickstxt.Visible = false;
+            lblclicks.Visible = true;
+            lbltimetxt.Visible = false;
+            lbltime.Visible = true;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (tempo > 0)
+            if (time > 0)
             {
-                tempo = tempo - 100;
-                lbtempo.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", tempo);
+                time = time - 100;
+                lbltime.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", time);
             }
             else
             {
-                if (tempo == 0)
+                if (time == 0)
                 {
                     timer.Enabled = false;
-                    gbduracao.Enabled = true;
-                    btplacar.Enabled = true;
-                    dgvpontuacao.Enabled = true;
-                    cps = Math.Round(clicks / (tempoi / 1000), 2);
-                    DialogResult msgresultado = MessageBox.Show($"Sua velocidade de clique foi de {cps}c/s. Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
-                    if (msgresultado == DialogResult.Yes)
+                    grpduration.Enabled = true;
+                    btnscores.Enabled = true;
+                    dgvscores.Enabled = true;
+                    cps = Math.Round(clicks / (itime / 1000), 2);
+                    DialogResult msgresult = MessageBox.Show($"Sua velocidade de clique foi de {cps}c/s. Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
+                    if (msgresult == DialogResult.Yes)
                     {
-                        LimparTela();
+                        ClearScreen();
 
-                        frmPontuacao frmpontuacao = new frmPontuacao();
-                        frmpontuacao.Show();
+                        frmScore frmscore = new frmScore();
+                        frmscore.Show();
                     }
                     else
                     {
-                        if (msgresultado == DialogResult.No)
+                        if (msgresult == DialogResult.No)
                         {
-                            LimparTela();
+                            ClearScreen();
                         }
                     }
                 }
             }
         }
 
-        private void btplacar_Click(object sender, EventArgs e)
+        private void btnscores_Click(object sender, EventArgs e)
         {
-            CarregarPlacar();
-            if (dgvpontuacao.Visible == false)
+            LoadScores();
+            if (dgvscores.Visible == false)
             {
-                dgvpontuacao.Visible = true;
-                dgvpontuacao.Enabled = true;
+                dgvscores.Visible = true;
+                dgvscores.Enabled = true;
             }
             else
             {
-                if (dgvpontuacao.Visible == true)
+                if (dgvscores.Visible == true)
                 {
-                    dgvpontuacao.Visible = false;
-                    dgvpontuacao.Enabled = false;
+                    dgvscores.Visible = false;
+                    dgvscores.Enabled = false;
                 }
             }
         }

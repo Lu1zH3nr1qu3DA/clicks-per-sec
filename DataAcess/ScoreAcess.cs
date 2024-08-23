@@ -1,22 +1,22 @@
-﻿using MOD;
+﻿using DataModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace DAL
+namespace DataAcess
 {
-    public class PontuacaoDAL
+    public class ScoreAcess
     {
         static string filePath;
-        public PontuacaoDAL()
+        public ScoreAcess()
         {
-            string diretorio = AppDomain.CurrentDomain.BaseDirectory;
-            string fileName = "pontuacao.dat";
-            filePath = Path.Combine(diretorio, fileName);
+            string dir = AppDomain.CurrentDomain.BaseDirectory;
+            string fileName = "score.dat";
+            filePath = Path.Combine(dir, fileName);
         }
 
-        public void Salvar(List<PontuacaoMOD> listapontuacao)
+        public void Save(List<ScoreModel> scorelist)
         {
             // Cria um formatador binário
             BinaryFormatter formatter = new BinaryFormatter();
@@ -25,22 +25,22 @@ namespace DAL
             using (FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 // Serializa os dados e os escreve no arquivo
-                formatter.Serialize(stream, listapontuacao);
+                formatter.Serialize(stream, scorelist);
             }   
         }
-        public List<PontuacaoMOD> CarregarPlacar(ref List<PontuacaoMOD> listapontuacao)
+        public List<ScoreModel> LoadScores(ref List<ScoreModel> scorelist)
         {
             if (File.Exists(filePath))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    return (List<PontuacaoMOD>)formatter.Deserialize(stream);
+                    return (List<ScoreModel>)formatter.Deserialize(stream);
                 }
             }
             else
             {
-                return new List<PontuacaoMOD>();
+                return new List<ScoreModel>();
             }
         }
     }

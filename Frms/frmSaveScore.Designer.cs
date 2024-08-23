@@ -1,6 +1,6 @@
 ﻿namespace Frms
 {
-    partial class frmPontuacao
+    partial class frmScore
     {
         /// <summary>
         /// Required designer variable.
