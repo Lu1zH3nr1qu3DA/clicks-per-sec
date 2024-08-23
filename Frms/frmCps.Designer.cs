@@ -193,10 +193,10 @@
             this.dgvscores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvscores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvscores.Enabled = false;
-            this.dgvscores.Location = new System.Drawing.Point(35, 50);
+            this.dgvscores.Location = new System.Drawing.Point(36, 50);
             this.dgvscores.Name = "dgvscores";
             this.dgvscores.ReadOnly = true;
-            this.dgvscores.Size = new System.Drawing.Size(731, 256);
+            this.dgvscores.Size = new System.Drawing.Size(728, 256);
             this.dgvscores.TabIndex = 7;
             this.dgvscores.Visible = false;
             // 

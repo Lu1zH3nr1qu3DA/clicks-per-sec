@@ -38,12 +38,12 @@ namespace Cps
             dgvscores.DataSource = scorelist;
             dgvscores.AutoGenerateColumns = true;
             dgvscores.Columns["Name"].HeaderText = "Nome";
-            dgvscores.Columns["Name"].Width = 300;
+            dgvscores.Columns["Name"].Width = 304;
             dgvscores.Columns["Cps"].HeaderText = "c/s";
-            dgvscores.Columns["Cps"].Width = 100;
+            dgvscores.Columns["Cps"].Width = 104;
             dgvscores.Columns["Cps"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvscores.Columns["Time"].HeaderText = "Duração (s)";
-            dgvscores.Columns["Time"].Width = 100;
+            dgvscores.Columns["Time"].Width = 104;
             dgvscores.Columns["Time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvscores.Columns["ScoreDt"].HeaderText = "Data";
             dgvscores.Columns["ScoreDt"].Width = 172;
