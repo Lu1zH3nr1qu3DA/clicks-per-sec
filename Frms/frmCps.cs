@@ -18,9 +18,10 @@ namespace Cps
             clicks = 0;
             lblclicks.Text = "Número de Cliques";
             lbltime.Text = "Tempo";
+
             lblclicks.Visible = false;
-            lblclickstxt.Visible = true;
             lbltime.Visible = false;
+            lblclickstxt.Visible = true;
             lbltimetxt.Visible = true;
         }
         public frmCps()
@@ -95,12 +96,14 @@ namespace Cps
 
         private void btnclick_Click(object sender, EventArgs e)
         {
+            lblclicks.Visible = true;
+            lbltime.Visible = true;
+            lblclickstxt.Visible = false;
+            lbltimetxt.Visible = false;
+
             clicks++;
             lblclicks.Text = clicks.ToString();
-            lblclicks.Visible = true;
-            lblclickstxt.Visible = false;
-            lbltime.Visible = true;
-            lbltimetxt.Visible = false;
+
             timer.Enabled = true;
             grpduration.Enabled = false;
         }
@@ -119,7 +122,9 @@ namespace Cps
                 {
                     timer.Enabled = false;
                     grpduration.Enabled = true;
+
                     cps = Math.Round(clicks / (itime / 1000), 2);
+                    
                     DialogResult msgresult = MessageBox.Show($"Sua velocidade de clique foi de {cps}c/s.", "Resultado");
                     if (msgresult == DialogResult.OK)
                     {
