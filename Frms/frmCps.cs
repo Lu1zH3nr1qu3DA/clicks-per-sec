@@ -41,10 +41,13 @@ namespace Cps
             dgvscores.Columns["Name"].Width = 256;
             dgvscores.Columns["Cps"].HeaderText = "c/s";
             dgvscores.Columns["Cps"].Width = 64;
+            dgvscores.Columns["Cps"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvscores.Columns["Time"].HeaderText = "Duração (s)";
             dgvscores.Columns["Time"].Width = 64;
+            dgvscores.Columns["Time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvscores.Columns["ScoreDt"].HeaderText = "Data";
             dgvscores.Columns["ScoreDt"].Width = 128;
+            dgvscores.Columns["ScoreDt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvscores.Refresh();
         }
         public static void SaveData(string name)
