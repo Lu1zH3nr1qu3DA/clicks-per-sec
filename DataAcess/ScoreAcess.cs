@@ -28,6 +28,10 @@ namespace DataAcess
                 formatter.Serialize(stream, scorelist);
             }
         }
+        public void Rename(ref List<ScoreModel> scorelist, ScoreModel score)
+        {
+
+        }
         public void Delete(ref List<ScoreModel> scorelist, ScoreModel score)
         {
             scorelist.Remove(score);

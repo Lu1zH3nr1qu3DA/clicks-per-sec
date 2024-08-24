@@ -64,7 +64,7 @@ namespace Cps
             scorelist.Add(score);
             frmCps.score.Save(scorelist);
         }
-        public void DeleteData(ref int scoreid)
+        public void DeleteScore(ref int scoreid)
         {
             ScoreModel delscore = new ScoreModel();
             delscore = scorelist[scoreid];
@@ -72,7 +72,7 @@ namespace Cps
             ScoreLogic score = new ScoreLogic();
             score.Delete(ref scorelist, delscore);
         }
-        public void UpdateData()
+        public void RenameScore()
         {
 
         }

@@ -12,6 +12,11 @@ namespace DataLogic
             ScoreAcess score = new ScoreAcess();
             score.Save(scorelist);
         }
+        public void Rename()
+        {
+            ScoreAcess score = new ScoreAcess();
+
+        }
         public void Delete(ref List<ScoreModel> scorelist, ScoreModel delscore)
         {
             ScoreAcess score = new ScoreAcess();

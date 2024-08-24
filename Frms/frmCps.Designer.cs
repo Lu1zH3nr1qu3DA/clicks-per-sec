@@ -43,6 +43,8 @@
             this.lblclickstxt = new System.Windows.Forms.Label();
             this.lbltimetxt = new System.Windows.Forms.Label();
             this.dgvscores = new System.Windows.Forms.DataGridView();
+            this.btndelete = new System.Windows.Forms.Button();
+            this.btnrename = new System.Windows.Forms.Button();
             this.grpduration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvscores)).BeginInit();
             this.SuspendLayout();
@@ -200,11 +202,33 @@
             this.dgvscores.TabIndex = 7;
             this.dgvscores.Visible = false;
             // 
+            // btndelete
+            // 
+            this.btndelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btndelete.Location = new System.Drawing.Point(457, 355);
+            this.btndelete.Name = "btndelete";
+            this.btndelete.Size = new System.Drawing.Size(101, 39);
+            this.btndelete.TabIndex = 8;
+            this.btndelete.Text = "Excluir";
+            this.btndelete.UseVisualStyleBackColor = true;
+            // 
+            // btnrename
+            // 
+            this.btnrename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnrename.Location = new System.Drawing.Point(564, 355);
+            this.btnrename.Name = "btnrename";
+            this.btnrename.Size = new System.Drawing.Size(101, 39);
+            this.btnrename.TabIndex = 9;
+            this.btnrename.Text = "Renomear";
+            this.btnrename.UseVisualStyleBackColor = true;
+            // 
             // frmCps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnrename);
+            this.Controls.Add(this.btndelete);
             this.Controls.Add(this.dgvscores);
             this.Controls.Add(this.btnscores);
             this.Controls.Add(this.btclick);
@@ -240,6 +264,8 @@
         private System.Windows.Forms.Label lblclickstxt;
         private System.Windows.Forms.Label lbltimetxt;
         private System.Windows.Forms.DataGridView dgvscores;
+        private System.Windows.Forms.Button btndelete;
+        private System.Windows.Forms.Button btnrename;
     }
 }
 
