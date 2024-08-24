@@ -194,6 +194,7 @@ namespace Cps
             {
                 dgvscores.Visible = true;
                 dgvscores.Enabled = true;
+                btnscores.Text = "Fechar";
             }
             else
             {
@@ -201,6 +202,7 @@ namespace Cps
                 {
                     dgvscores.Visible = false;
                     dgvscores.Enabled = false;
+                    btnscores.Text = "Placar";
                 }
             }
         }
