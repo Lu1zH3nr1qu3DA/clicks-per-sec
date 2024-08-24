@@ -14,6 +14,8 @@ namespace Cps
 
         public static List<ScoreModel> scorelist = new List<ScoreModel>();
 
+        static int scoreid = 0;
+
         static double clicks = 0.00;
         static double itime = 0.00;
         static double time = 0.00;
@@ -63,6 +65,14 @@ namespace Cps
             frmCps.score.Save(scorelist);
         }
 
+        public void RemoveData(ref int scoreid)
+        {
+            ScoreModel delscore = new ScoreModel();
+            delscore = scorelist[scoreid];
+
+            ScoreLogic score = new ScoreLogic();
+            score.Delete(delscore, scorelist);
+        }
         public frmCps()
         {
             InitializeComponent();
