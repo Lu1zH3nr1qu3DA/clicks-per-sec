@@ -28,16 +28,7 @@ namespace DataAcess
                 formatter.Serialize(stream, scorelist);
             }
         }
-        public void Rename(ref List<ScoreModel> scorelist, ScoreModel score)
-        {
-
-        }
-        public void Delete(ref List<ScoreModel> scorelist, ScoreModel score)
-        {
-            scorelist.Remove(score);
-            Save(scorelist);
-        }
-        public List<ScoreModel> LoadScores(ref List<ScoreModel> scorelist)
+        public List<ScoreModel> Load(ref List<ScoreModel> scorelist)
         {
             if (File.Exists(filePath))
             {

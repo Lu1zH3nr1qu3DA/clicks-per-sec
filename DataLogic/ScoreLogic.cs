@@ -6,26 +6,34 @@ namespace DataLogic
 {
     public class ScoreLogic
     {
-
         public void Save(List<ScoreModel> scorelist)
         {
             ScoreAcess score = new ScoreAcess();
             score.Save(scorelist);
         }
-        public void Rename()
-        {
-            ScoreAcess score = new ScoreAcess();
-
-        }
-        public void Delete(ref List<ScoreModel> scorelist, ScoreModel delscore)
-        {
-            ScoreAcess score = new ScoreAcess();
-            score.Delete(ref scorelist, delscore);
-        }
-        public List<ScoreModel> LoadScores(ref List<ScoreModel> scorelist)
+        public List<ScoreModel> Load(ref List<ScoreModel> scorelist)
         {
             ScoreAcess dal = new ScoreAcess();
-            return dal.LoadScores(ref scorelist);
+            return dal.Load(ref scorelist);
+        }
+        public void Rename(ref List<ScoreModel> scorelist, ref int scoreid, string name)
+        {
+            ScoreModel renamescore = new ScoreModel();
+            renamescore = scorelist[scoreid];
+            renamescore.Name = name;
+
+            ScoreAcess score = new ScoreAcess();
+            scorelist.Add(renamescore);
+            scorelist.Remove(scorelist[scoreid]);
+        }
+        public void Delete(ref List<ScoreModel> scorelist, ref int scoreid)
+        {
+            ScoreModel delscore = new ScoreModel();
+            delscore = scorelist[scoreid];
+
+            ScoreAcess score = new ScoreAcess();
+            scorelist.Remove(delscore);
+            Save(scorelist);
         }
     }
 }

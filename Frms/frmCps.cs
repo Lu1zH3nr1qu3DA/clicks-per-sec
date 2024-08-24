@@ -33,9 +33,9 @@ namespace Cps
             lblclicks.Visible = false;
             lbltime.Visible = false;
         }
-        private void LoadScores()
+        private void ShowScores()
         {
-            scorelist = score.LoadScores(ref scorelist);
+            scorelist = score.Load(ref scorelist);
 
             dgvscores.DataSource = scorelist;
             dgvscores.AutoGenerateColumns = true;
@@ -54,27 +54,25 @@ namespace Cps
         }
         public static void SaveData(string name)
         {
-            ScoreModel score = new ScoreModel();
+            ScoreModel newscore = new ScoreModel();
 
-            score.Name = name;
-            score.Cps = cps.ToString();
-            score.Time = (itime / 1000).ToString();
-            score.ScoreDt = DateTime.Now.ToString();
+            newscore.Name = name;
+            newscore.Cps = cps.ToString();
+            newscore.Time = (itime / 1000).ToString();
+            newscore.ScoreDt = DateTime.Now.ToString();
             
-            scorelist.Add(score);
-            frmCps.score.Save(scorelist);
+            scorelist.Add(newscore);
+            score.Save(scorelist);
         }
-        public void DeleteScore(ref int scoreid)
+        public void DeleteScore()
         {
-            ScoreModel delscore = new ScoreModel();
-            delscore = scorelist[scoreid];
-
             ScoreLogic score = new ScoreLogic();
-            score.Delete(ref scorelist, delscore);
+            score.Delete(ref scorelist, ref scoreid);
         }
-        public void RenameScore()
+        public void RenameScore(string name)
         {
-
+            ScoreLogic score = new ScoreLogic();
+            score.Rename(ref scorelist, ref scoreid, name);
         }
 
         public frmCps()
@@ -84,7 +82,7 @@ namespace Cps
 
         private void FrmCps_Load(object sender, EventArgs e)
         {
-            LoadScores();
+            ShowScores();
             if (rdo10sec.Checked)
             {
                 itime = 10000;
@@ -203,7 +201,7 @@ namespace Cps
 
         private void btnscores_Click(object sender, EventArgs e)
         {
-            LoadScores();
+            ShowScores();
             if (dgvscores.Visible == false)
             {
                 dgvscores.Visible = true;
