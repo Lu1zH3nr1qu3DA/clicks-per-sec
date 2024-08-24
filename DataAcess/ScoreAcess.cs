@@ -26,7 +26,12 @@ namespace DataAcess
             {
                 // Serializa os dados e os escreve no arquivo
                 formatter.Serialize(stream, scorelist);
-            }   
+            }
+        }
+        public void Delete(List<ScoreModel> scorelist, ScoreModel score)
+        {
+            scorelist.Remove(score);
+            Save(scorelist);
         }
         public List<ScoreModel> LoadScores(ref List<ScoreModel> scorelist)
         {
