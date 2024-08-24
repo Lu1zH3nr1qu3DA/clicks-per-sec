@@ -1,5 +1,5 @@
-﻿using DataLogic;
-using Frms;
+﻿using Frms;
+using DataLogic;
 using DataModel;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,8 @@ namespace Cps
         static ScoreLogic score = new ScoreLogic();
 
         public static List<ScoreModel> scorelist = new List<ScoreModel>();
+
+        static char operation;
 
         static int scoreid = 0;
 
@@ -42,76 +44,66 @@ namespace Cps
             dgvscores.Columns["Name"].HeaderText = "Nome";
             dgvscores.Columns["Name"].Width = 304;
             dgvscores.Columns["Cps"].HeaderText = "c/s";
-            dgvscores.Columns["Cps"].Width = 104;
+            dgvscores.Columns["Cps"].Width = 116;
             dgvscores.Columns["Cps"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvscores.Columns["Time"].HeaderText = "Duração (s)";
-            dgvscores.Columns["Time"].Width = 104;
+            dgvscores.Columns["Time"].Width = 116;
             dgvscores.Columns["Time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvscores.Columns["ScoreDt"].HeaderText = "Data";
             dgvscores.Columns["ScoreDt"].Width = 172;
             dgvscores.Columns["ScoreDt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvscores.Refresh();
         }
-        public static void SaveData(string name)
+        public void RefreshDgv()
         {
-            ScoreModel newscore = new ScoreModel();
+            if (dgvscores.Visible && dgvscores.Enabled)
+            {
+                dgvscores.Visible = false;
+                dgvscores.Enabled = false;
+                dgvscores.Visible = true;
+                dgvscores.Enabled = true;
+            }
+            else
+            {
+                if (dgvscores.Visible == false &&  dgvscores.Enabled == false)
+                {
+                    dgvscores.Visible = true;
+                    dgvscores.Enabled = true;
+                    dgvscores.Visible = false;
+                    dgvscores.Enabled = false;
+                }
+            }
+        }
+        public static void ExecuteOperation(string name = "")
+        {
+            switch (operation)
+            {
+                case 'S':
+                    ScoreModel newscore = new ScoreModel();
 
-            newscore.Name = name;
-            newscore.Cps = cps.ToString();
-            newscore.Time = (itime / 1000).ToString();
-            newscore.ScoreDt = DateTime.Now.ToString();
-            
-            scorelist.Add(newscore);
-            score.Save(scorelist);
-        }
-        public void DeleteScore()
-        {
-            ScoreLogic score = new ScoreLogic();
-            score.Delete(ref scorelist, ref scoreid);
-        }
-        public void RenameScore(string name)
-        {
-            ScoreLogic score = new ScoreLogic();
-            score.Rename(ref scorelist, ref scoreid, name);
+                    newscore.Name = name;
+                    newscore.Cps = cps.ToString();
+                    newscore.Time = (itime / 1000).ToString();
+                    newscore.ScoreDt = DateTime.Now.ToString();
+
+                    scorelist.Add(newscore);
+
+                    score.Save(scorelist);
+                    break;
+                case 'R':
+                    score.Rename(ref scorelist, ref scoreid, name);
+                    break;
+                case 'D':
+                    score.Delete(ref scorelist, ref scoreid);
+                    break;
+            }
         }
 
         public frmCps()
         {
             InitializeComponent();
-        }
-
-        private void FrmCps_Load(object sender, EventArgs e)
-        {
-            ShowScores();
-            if (rdo10sec.Checked)
-            {
-                itime = 10000;
-                time = itime;
-            }
-            else
-            {
-                if (rdo15sec.Checked)
-                {
-                    itime = 15000;
-                    time = itime;
-                }
-                else
-                {
-                    if (rdo30sec.Checked)
-                    {
-                        itime = 30000;
-                        time = itime;
-                    }
-                    else
-                    {
-                        if (rdo1min.Checked)
-                        {
-                            itime = 60000;
-                            time = itime;
-                        }
-                    }
-                }
-            }
+            
+            itime = 15000;
+            time = itime;
         }
 
         private void rdo10sec_CheckedChanged(object sender, EventArgs e)
@@ -163,13 +155,12 @@ namespace Cps
                 lbltime.Visible = true;
             }
         }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             if (time > 0)
             {
                 time = time - 100;
-                lbltime.Text = String.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:00,000}", time);
+                lbltime.Text = String.Format(CultureInfo.GetCultureInfo("en-US"), "{0:00,000}", time);
             }
             else
             {
@@ -179,14 +170,19 @@ namespace Cps
                     grpduration.Enabled = true;
                     btnscores.Enabled = true;
                     dgvscores.Enabled = true;
+
                     cps = Math.Round(clicks / (itime / 1000), 2);
+
                     DialogResult msgresult = MessageBox.Show($"Sua velocidade de clique foi de {cps}c/s. Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
                     if (msgresult == DialogResult.Yes)
                     {
                         ResetScreen();
 
-                        frmScore frmscore = new frmScore();
+                        operation = 'S';
+
+                        frmSaveScore frmscore = new frmSaveScore();
                         frmscore.Show();
+                        RefreshDgv();
                     }
                     else
                     {
@@ -206,6 +202,11 @@ namespace Cps
             {
                 dgvscores.Visible = true;
                 dgvscores.Enabled = true;
+
+                btnscores.Text = "Fechar";
+
+                btnrename.Visible = true;
+                btndelete.Visible = true;
             }
             else
             {
@@ -213,7 +214,54 @@ namespace Cps
                 {
                     dgvscores.Visible = false;
                     dgvscores.Enabled = false;
+
+                    btnscores.Text = "Placar";
+
+                    btnrename.Enabled = false;
+                    btnrename.Visible = false;
+                    btndelete.Enabled = false;
+                    btndelete.Visible = false;
                 }
+            }
+        }
+        private void dgvscores_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvscores.CurrentCell.ColumnIndex == 0)
+            {
+                scoreid = dgvscores.CurrentCell.RowIndex;
+                btndelete.Enabled = false;
+                btnrename.Enabled = true;
+            }
+            else
+            {
+                btndelete.Enabled = false;
+                btnrename.Enabled = false;
+            }
+        }
+        private void dgvscores_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            scoreid = dgvscores.CurrentRow.Index;
+            btndelete.Enabled = true;
+            btnrename.Enabled = true;
+        }
+
+        private void btnrename_Click(object sender, EventArgs e)
+        {
+            operation = 'R';
+            frmSaveScore frmname = new frmSaveScore();
+            frmname.Show();
+            ShowScores();
+            RefreshDgv();
+        }
+        private void btndelete_Click(object sender, EventArgs e)
+        {
+            DialogResult msgresult = MessageBox.Show($"Você tem certeza que deseja excluir?", "Excluir", MessageBoxButtons.YesNo);
+            if (msgresult == DialogResult.Yes)
+            {
+                operation = 'D';
+                ExecuteOperation();
+                ShowScores();
+                RefreshDgv();
             }
         }
     }

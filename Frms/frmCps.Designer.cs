@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblclicks = new System.Windows.Forms.Label();
             this.btclick = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
@@ -187,49 +188,65 @@
             this.dgvscores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvscores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvscores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvscores.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvscores.Enabled = false;
-            this.dgvscores.Location = new System.Drawing.Point(36, 50);
+            this.dgvscores.Location = new System.Drawing.Point(25, 50);
             this.dgvscores.Name = "dgvscores";
             this.dgvscores.ReadOnly = true;
-            this.dgvscores.Size = new System.Drawing.Size(728, 256);
+            this.dgvscores.Size = new System.Drawing.Size(750, 256);
             this.dgvscores.TabIndex = 7;
             this.dgvscores.Visible = false;
+            this.dgvscores.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvscores_CellEnter);
+            this.dgvscores.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvscores_RowHeaderMouseClick);
             // 
             // btndelete
             // 
+            this.btndelete.Enabled = false;
             this.btndelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btndelete.Location = new System.Drawing.Point(457, 355);
+            this.btndelete.Location = new System.Drawing.Point(564, 355);
             this.btndelete.Name = "btndelete";
             this.btndelete.Size = new System.Drawing.Size(101, 39);
             this.btndelete.TabIndex = 8;
             this.btndelete.Text = "Excluir";
             this.btndelete.UseVisualStyleBackColor = true;
+            this.btndelete.Visible = false;
+            this.btndelete.Click += new System.EventHandler(this.btndelete_Click);
             // 
             // btnrename
             // 
+            this.btnrename.Enabled = false;
             this.btnrename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnrename.Location = new System.Drawing.Point(564, 355);
+            this.btnrename.Location = new System.Drawing.Point(457, 355);
             this.btnrename.Name = "btnrename";
             this.btnrename.Size = new System.Drawing.Size(101, 39);
             this.btnrename.TabIndex = 9;
             this.btnrename.Text = "Renomear";
             this.btnrename.UseVisualStyleBackColor = true;
+            this.btnrename.Visible = false;
+            this.btnrename.Click += new System.EventHandler(this.btnrename_Click);
             // 
             // frmCps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 449);
+            this.Controls.Add(this.dgvscores);
             this.Controls.Add(this.btnrename);
             this.Controls.Add(this.btndelete);
-            this.Controls.Add(this.dgvscores);
             this.Controls.Add(this.btnscores);
             this.Controls.Add(this.btclick);
             this.Controls.Add(this.grpduration);
@@ -240,7 +257,6 @@
             this.Name = "frmCps";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliques por Segundo";
-            this.Load += new System.EventHandler(this.FrmCps_Load);
             this.grpduration.ResumeLayout(false);
             this.grpduration.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvscores)).EndInit();

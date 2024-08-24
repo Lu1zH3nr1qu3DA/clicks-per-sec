@@ -25,6 +25,8 @@ namespace DataLogic
             ScoreAcess score = new ScoreAcess();
             scorelist.Add(renamescore);
             scorelist.Remove(scorelist[scoreid]);
+            Save(scorelist);
+            Load(ref scorelist);
         }
         public void Delete(ref List<ScoreModel> scorelist, ref int scoreid)
         {

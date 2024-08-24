@@ -4,23 +4,18 @@ using System.Windows.Forms;
 
 namespace Frms
 {
-    public partial class frmScore : Form
+    public partial class frmSaveScore : Form
     {
-        public frmScore()
+        public frmSaveScore()
         {
             InitializeComponent();
         }
 
-        private void btsalvar_Click(object sender, EventArgs e)
+        private void btnsave_Click(object sender, EventArgs e)
         {
-            string nome = tbnome.Text;
-            frmCps.SaveData(nome);
+            string name = txtname.Text;
+            frmCps.ExecuteOperation(name);
             Close();
-        }
-
-        private void frmPontuacao_Load(object sender, EventArgs e)
-        {
-            btsalvar.Focus();
         }
     }
 }

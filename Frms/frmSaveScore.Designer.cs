@@ -1,6 +1,6 @@
 ﻿namespace Frms
 {
-    partial class frmScore
+    partial class frmSaveScore
     {
         /// <summary>
         /// Required designer variable.
@@ -28,49 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbnome = new System.Windows.Forms.Label();
-            this.tbnome = new System.Windows.Forms.TextBox();
-            this.btsalvar = new System.Windows.Forms.Button();
+            this.lblname = new System.Windows.Forms.Label();
+            this.txtname = new System.Windows.Forms.TextBox();
+            this.btnsave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // lbnome
+            // lblname
             // 
-            this.lbnome.AutoSize = true;
-            this.lbnome.Location = new System.Drawing.Point(110, 58);
-            this.lbnome.Name = "lbnome";
-            this.lbnome.Size = new System.Drawing.Size(35, 13);
-            this.lbnome.TabIndex = 0;
-            this.lbnome.Text = "Nome";
+            this.lblname.AutoSize = true;
+            this.lblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblname.Location = new System.Drawing.Point(17, 51);
+            this.lblname.Name = "lblname";
+            this.lblname.Size = new System.Drawing.Size(51, 20);
+            this.lblname.TabIndex = 0;
+            this.lblname.Text = "Nome";
             // 
-            // tbnome
+            // txtname
             // 
-            this.tbnome.Location = new System.Drawing.Point(113, 74);
-            this.tbnome.Name = "tbnome";
-            this.tbnome.Size = new System.Drawing.Size(253, 20);
-            this.tbnome.TabIndex = 1;
+            this.txtname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtname.Location = new System.Drawing.Point(21, 74);
+            this.txtname.Name = "txtname";
+            this.txtname.Size = new System.Drawing.Size(351, 26);
+            this.txtname.TabIndex = 0;
             // 
-            // btsalvar
+            // btnsave
             // 
-            this.btsalvar.Location = new System.Drawing.Point(204, 152);
-            this.btsalvar.Name = "btsalvar";
-            this.btsalvar.Size = new System.Drawing.Size(75, 23);
-            this.btsalvar.TabIndex = 1;
-            this.btsalvar.Text = "Salvar";
-            this.btsalvar.UseVisualStyleBackColor = true;
-            this.btsalvar.Click += new System.EventHandler(this.btsalvar_Click);
+            this.btnsave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnsave.Location = new System.Drawing.Point(145, 152);
+            this.btnsave.Name = "btnsave";
+            this.btnsave.Size = new System.Drawing.Size(102, 40);
+            this.btnsave.TabIndex = 1;
+            this.btnsave.Text = "Salvar";
+            this.btnsave.UseVisualStyleBackColor = true;
+            this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
-            // frmPontuacao
+            // frmSaveScore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 251);
-            this.Controls.Add(this.btsalvar);
-            this.Controls.Add(this.tbnome);
-            this.Controls.Add(this.lbnome);
-            this.Name = "frmPontuacao";
+            this.ClientSize = new System.Drawing.Size(392, 205);
+            this.Controls.Add(this.btnsave);
+            this.Controls.Add(this.txtname);
+            this.Controls.Add(this.lblname);
+            this.Name = "frmSaveScore";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Placar de Pontos";
-            this.Load += new System.EventHandler(this.frmPontuacao_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,8 +80,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbnome;
-        private System.Windows.Forms.TextBox tbnome;
-        private System.Windows.Forms.Button btsalvar;
+        private System.Windows.Forms.Label lblname;
+        private System.Windows.Forms.TextBox txtname;
+        private System.Windows.Forms.Button btnsave;
     }
 }
