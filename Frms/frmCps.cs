@@ -64,13 +64,13 @@ namespace Cps
             scorelist.Add(score);
             frmCps.score.Save(scorelist);
         }
-        public void RemoveData(ref int scoreid)
+        public void DeleteData(ref int scoreid)
         {
             ScoreModel delscore = new ScoreModel();
             delscore = scorelist[scoreid];
 
             ScoreLogic score = new ScoreLogic();
-            score.Delete(delscore, scorelist);
+            score.Delete(ref scorelist, delscore);
         }
         public void UpdateData()
         {

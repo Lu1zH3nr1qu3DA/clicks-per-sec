@@ -28,7 +28,7 @@ namespace DataAcess
                 formatter.Serialize(stream, scorelist);
             }
         }
-        public void Delete(List<ScoreModel> scorelist, ScoreModel score)
+        public void Delete(ref List<ScoreModel> scorelist, ScoreModel score)
         {
             scorelist.Remove(score);
             Save(scorelist);

@@ -12,10 +12,10 @@ namespace DataLogic
             ScoreAcess score = new ScoreAcess();
             score.Save(scorelist);
         }
-        public void Delete(ScoreModel delscore, List<ScoreModel> scorelist)
+        public void Delete(ref List<ScoreModel> scorelist, ScoreModel delscore)
         {
             ScoreAcess score = new ScoreAcess();
-            score.Delete(scorelist, delscore);
+            score.Delete(ref scorelist, delscore);
         }
         public List<ScoreModel> LoadScores(ref List<ScoreModel> scorelist)
         {
