@@ -1,34 +1,36 @@
-﻿using Frms;
-using DataLogic;
+﻿using DataLogic;
 using DataModel;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace Cps
+namespace Frms
 {
+    // O frmCps é o formulário principal.
     public partial class frmCps : Form
     {
-        static ScoreLogic score = new ScoreLogic();
+        public static List<ScoreModel> scorelist = new List<ScoreModel>();    // Lista das pontuações.
 
-        public static List<ScoreModel> scorelist = new List<ScoreModel>();
+        static ScoreLogic score = new ScoreLogic();    // Objeto das operações.
 
-        static char operation;
+        static BindingSource bsource = new BindingSource();
 
-        static int scoreid = 0;
+        static double time = 0.00;    // Contador do tempo do timer.
+        static double itime = 0.00;    // O tempo inicial do timer.
+        static double clicks = 0.00;    // Contador dos cliques.
+        static double cps = 0.00;    // Resultado dos c/s.
 
-        static double clicks = 0.00;
-        static double itime = 0.00;
-        static double time = 0.00;
-        static double cps = 0.00;
+        static int scoreid = 0;    // Id da pontuação.
+
+        static char operation;    // Define a operação.
+
+        // TODO: Continue a comentar...
 
         void ResetScreen()
         {
             time = itime;
             clicks = 0;
-            lblclicks.Text = "Número de Cliques";
-            lbltime.Text = "Tempo";
 
             lblclickstxt.Visible = true;
             lbltimetxt.Visible = true;
@@ -39,7 +41,10 @@ namespace Cps
         {
             scorelist = score.Load(ref scorelist);
 
-            dgvscores.DataSource = scorelist;
+            bsource.DataSource = scorelist;
+
+            dgvscores.DataSource = bsource;
+
             dgvscores.AutoGenerateColumns = true;
             dgvscores.Columns["Name"].HeaderText = "Nome";
             dgvscores.Columns["Name"].Width = 304;
@@ -52,26 +57,6 @@ namespace Cps
             dgvscores.Columns["ScoreDt"].HeaderText = "Data";
             dgvscores.Columns["ScoreDt"].Width = 172;
             dgvscores.Columns["ScoreDt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        }
-        public void RefreshDgv()
-        {
-            if (dgvscores.Visible && dgvscores.Enabled)
-            {
-                dgvscores.Visible = false;
-                dgvscores.Enabled = false;
-                dgvscores.Visible = true;
-                dgvscores.Enabled = true;
-            }
-            else
-            {
-                if (dgvscores.Visible == false &&  dgvscores.Enabled == false)
-                {
-                    dgvscores.Visible = true;
-                    dgvscores.Enabled = true;
-                    dgvscores.Visible = false;
-                    dgvscores.Enabled = false;
-                }
-            }
         }
         public static void ExecuteOperation(string name = "")
         {
@@ -88,12 +73,18 @@ namespace Cps
                     scorelist.Add(newscore);
 
                     score.Save(scorelist);
+                    
+                    bsource.ResetBindings(false);
                     break;
                 case 'R':
                     score.Rename(ref scorelist, ref scoreid, name);
+                    
+                    bsource.ResetBindings(false);
                     break;
                 case 'D':
                     score.Delete(ref scorelist, ref scoreid);
+                    
+                    bsource.ResetBindings(false);
                     break;
             }
         }
@@ -155,6 +146,7 @@ namespace Cps
                 lbltime.Visible = true;
             }
         }
+
         private void timer_Tick(object sender, EventArgs e)
         {
             if (time > 0)
@@ -182,7 +174,6 @@ namespace Cps
 
                         frmSaveScore frmscore = new frmSaveScore();
                         frmscore.Show();
-                        RefreshDgv();
                     }
                     else
                     {
@@ -224,6 +215,7 @@ namespace Cps
                 }
             }
         }
+
         private void dgvscores_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvscores.CurrentCell.ColumnIndex == 0)
@@ -250,9 +242,8 @@ namespace Cps
             operation = 'R';
             frmSaveScore frmname = new frmSaveScore();
             frmname.Show();
-            ShowScores();
-            RefreshDgv();
         }
+
         private void btndelete_Click(object sender, EventArgs e)
         {
             DialogResult msgresult = MessageBox.Show($"Você tem certeza que deseja excluir?", "Excluir", MessageBoxButtons.YesNo);
@@ -260,8 +251,6 @@ namespace Cps
             {
                 operation = 'D';
                 ExecuteOperation();
-                ShowScores();
-                RefreshDgv();
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace Cps
+﻿namespace Frms
 {
     partial class frmCps
     {

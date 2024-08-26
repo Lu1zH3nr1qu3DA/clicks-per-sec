@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Cps.Properties
+namespace Frms.Properties
 {
 
 
