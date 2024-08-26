@@ -250,7 +250,7 @@ namespace Frms
             if (msgresult == DialogResult.Yes)
             {
                 operation = 'D';
-                ExecuteOperation();
+                ExecuteOperation();    // TODO: Resolver a questão dos botões que não desabilitam!
             }
         }
     }
