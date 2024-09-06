@@ -191,6 +191,8 @@ namespace Frms
             ShowScores();
             if (dgvscores.Visible == false)
             {
+
+                // TODO: Continua
                 dgvscores.Visible = true;
                 dgvscores.Enabled = true;
 
@@ -218,16 +220,19 @@ namespace Frms
 
         private void dgvscores_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvscores.CurrentCell.ColumnIndex == 0)
+            if (dgvscores.RowCount != 0)
             {
-                scoreid = dgvscores.CurrentCell.RowIndex;
-                btndelete.Enabled = false;
-                btnrename.Enabled = true;
-            }
-            else
-            {
-                btndelete.Enabled = false;
-                btnrename.Enabled = false;
+                if (dgvscores.CurrentCell.ColumnIndex == 0)
+                {
+                    scoreid = dgvscores.CurrentCell.RowIndex;
+                    btndelete.Enabled = false;
+                    btnrename.Enabled = true;
+                }
+                else
+                {
+                    btndelete.Enabled = false;
+                    btnrename.Enabled = false;
+                }
             }
         }
         private void dgvscores_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -251,7 +256,13 @@ namespace Frms
             {
                 operation = 'D';
                 ExecuteOperation();    // TODO: Resolver a questão dos botões que não desabilitam!
+                if (dgvscores.RowCount == 0)
+                {
+                    btndelete.Enabled = false;
+                    btnrename.Enabled = false;
+                }
             }
+
         }
     }
 }

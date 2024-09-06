@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblclicks = new System.Windows.Forms.Label();
-            this.btclick = new System.Windows.Forms.Button();
+            this.btnclick = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.lbltime = new System.Windows.Forms.Label();
             this.grpduration = new System.Windows.Forms.GroupBox();
@@ -61,16 +61,16 @@
             this.lblclicks.Text = "0";
             this.lblclicks.Visible = false;
             // 
-            // btclick
+            // btnclick
             // 
-            this.btclick.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btclick.Location = new System.Drawing.Point(350, 206);
-            this.btclick.Name = "btclick";
-            this.btclick.Size = new System.Drawing.Size(101, 39);
-            this.btclick.TabIndex = 0;
-            this.btclick.Text = "Clique Aqui";
-            this.btclick.UseVisualStyleBackColor = true;
-            this.btclick.Click += new System.EventHandler(this.btnclick_Click);
+            this.btnclick.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnclick.Location = new System.Drawing.Point(350, 206);
+            this.btnclick.Name = "btnclick";
+            this.btnclick.Size = new System.Drawing.Size(101, 39);
+            this.btnclick.TabIndex = 0;
+            this.btnclick.Text = "Clique Aqui";
+            this.btnclick.UseVisualStyleBackColor = true;
+            this.btnclick.Click += new System.EventHandler(this.btnclick_Click);
             // 
             // timer
             // 
@@ -208,6 +208,7 @@
             this.dgvscores.Name = "dgvscores";
             this.dgvscores.ReadOnly = true;
             this.dgvscores.Size = new System.Drawing.Size(750, 256);
+            this.dgvscores.StandardTab = true;
             this.dgvscores.TabIndex = 7;
             this.dgvscores.Visible = false;
             this.dgvscores.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvscores_CellEnter);
@@ -244,16 +245,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 449);
-            this.Controls.Add(this.dgvscores);
             this.Controls.Add(this.btnrename);
             this.Controls.Add(this.btndelete);
             this.Controls.Add(this.btnscores);
-            this.Controls.Add(this.btclick);
+            this.Controls.Add(this.btnclick);
             this.Controls.Add(this.grpduration);
             this.Controls.Add(this.lblclicks);
             this.Controls.Add(this.lblclickstxt);
             this.Controls.Add(this.lbltime);
             this.Controls.Add(this.lbltimetxt);
+            this.Controls.Add(this.dgvscores);
             this.Name = "frmCps";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliques por Segundo";
@@ -268,7 +269,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblclicks;
-        private System.Windows.Forms.Button btclick;
+        private System.Windows.Forms.Button btnclick;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label lbltime;
         private System.Windows.Forms.GroupBox grpduration;
