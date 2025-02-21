@@ -245,6 +245,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 449);
+            this.Controls.Add(this.dgvscores);
             this.Controls.Add(this.btnrename);
             this.Controls.Add(this.btndelete);
             this.Controls.Add(this.btnscores);
@@ -254,7 +255,6 @@
             this.Controls.Add(this.lblclickstxt);
             this.Controls.Add(this.lbltime);
             this.Controls.Add(this.lbltimetxt);
-            this.Controls.Add(this.dgvscores);
             this.Name = "frmCps";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliques por Segundo";
