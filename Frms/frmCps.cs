@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace Frms
 {
-    // O frmCps é o formulário principal.
     public partial class frmCps : Form
     {
         public static List<ScoreModel> scorelist = new List<ScoreModel>();    // Lista das pontuações.
@@ -25,9 +24,7 @@ namespace Frms
 
         static char operation;    // Define a operação.
 
-        // TODO: Continue a comentar...
-
-        void ResetScreen()
+        void ResetScreen()    // Função que redefine a tela.
         {
             time = itime;
             clicks = 0;
@@ -37,7 +34,7 @@ namespace Frms
             lblclicks.Visible = false;
             lbltime.Visible = false;
         }
-        private void ShowScores()
+        private void ShowScores()    // Função que mostra as pontuações.
         {
             scorelist = score.Load(ref scorelist);
 
@@ -62,7 +59,7 @@ namespace Frms
         {
             switch (operation)
             {
-                case 'S':
+                case 'S':    // Operação "Salvar".
                     ScoreModel newscore = new ScoreModel();
 
                     newscore.Name = name;
@@ -76,12 +73,12 @@ namespace Frms
                     
                     bsource.ResetBindings(false);
                     break;
-                case 'R':
+                case 'R':    // Operação "Renomear".
                     score.Rename(ref scorelist, ref scoreid, name);
                     
                     bsource.ResetBindings(false);
                     break;
-                case 'D':
+                case 'D':    // Operação "Deletar".
                     score.Delete(ref scorelist, ref scoreid);
                     
                     bsource.ResetBindings(false);
@@ -165,7 +162,12 @@ namespace Frms
 
                     cps = Math.Round(clicks / (itime / 1000), 2);
 
-                    DialogResult msgresult = MessageBox.Show($"Sua velocidade de clique foi de {cps}c/s. Gostaria de salvar sua pontuação?", "Resultado", MessageBoxButtons.YesNo);
+                    DialogResult msgresult = MessageBox.Show(
+                        $"Sua velocidade de clique foi de {cps}c/s. Gostaria de salvar sua pontuação?", 
+                        "Resultado",
+                        MessageBoxButtons.YesNo
+                        );
+
                     if (msgresult == DialogResult.Yes)
                     {
                         ResetScreen();
@@ -192,7 +194,6 @@ namespace Frms
             if (dgvscores.Visible == false)
             {
 
-                // TODO: Continua
                 dgvscores.Visible = true;
                 dgvscores.Enabled = true;
 
@@ -251,18 +252,17 @@ namespace Frms
 
         private void btndelete_Click(object sender, EventArgs e)
         {
-            DialogResult msgresult = MessageBox.Show($"Você tem certeza que deseja excluir?", "Excluir", MessageBoxButtons.YesNo);
+            DialogResult msgresult = MessageBox.Show("Você tem certeza que deseja excluir?", "Excluir", MessageBoxButtons.YesNo);
             if (msgresult == DialogResult.Yes)
             {
                 operation = 'D';
-                ExecuteOperation();    // TODO: Resolver a questão dos botões que não desabilitam!
+                ExecuteOperation();
                 if (dgvscores.RowCount == 0)
                 {
                     btndelete.Enabled = false;
                     btnrename.Enabled = false;
                 }
             }
-
         }
     }
 }

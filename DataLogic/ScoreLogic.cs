@@ -2,26 +2,26 @@
 using DataModel;
 using System.Collections.Generic;
 
-/*
- * Aqui é onde ficam as funções e métodos que tem o objetivo de:
- * C - Create (Cadastrar);
- * R - Read (Ler);
- * U - Update (Atualizar/Renomear);
- * D - Delete (Deletar).
- */
+/// <summary>
+///  Destinado às funções e métodos
+///  Create (Cadastrar);
+///  Read (Ler);
+///  Update (Atualizar);
+///  Delete (Deletar).
+/// </summary>
 
 namespace DataLogic
 {
     public class ScoreLogic
     {
-        // Esse método leva a lista para ser gravada no arquivo.
+        // Método que leva a lista para ser gravada no arquivo.
         public void Save(List<ScoreModel> scorelist)
         {
             ScoreAcess score = new ScoreAcess();
             score.Save(scorelist);
         }
 
-        // Essa função retorna a lista para ser preenchida com os dados do arquivo.
+        // Função para retornar a lista para ser preenchida com os dados do arquivo.
         public List<ScoreModel> Load(ref List<ScoreModel> scorelist)
         {
             ScoreAcess dal = new ScoreAcess();
@@ -32,14 +32,13 @@ namespace DataLogic
         public void Rename(ref List<ScoreModel> scorelist, ref int scoreid, string name)
         {
             ScoreModel renamescore = new ScoreModel();
-            renamescore = scorelist[scoreid];    // Copia os dados do item a ser renomeado.
-            renamescore.Name = name;    // Altera o nome do item copiado.
+            renamescore = scorelist[scoreid];
+            renamescore.Name = name;
 
             ScoreAcess score = new ScoreAcess();
-            scorelist.Add(renamescore);    // Adiciona o item copiado como um novo item na lista.
-            scorelist.Remove(scorelist[scoreid]);    // Remove o item com o nome antigo da lista.
+            scorelist.Add(renamescore);
+            scorelist.Remove(scorelist[scoreid]);
 
-            // Sobrescreve os dados no arquivo com a lista alterada.
             Save(scorelist);
         }
 

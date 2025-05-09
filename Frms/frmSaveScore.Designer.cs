@@ -45,6 +45,7 @@
             // 
             // txtname
             // 
+            this.txtname.AllowDrop = true;
             this.txtname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtname.Location = new System.Drawing.Point(21, 74);
             this.txtname.Name = "txtname";
@@ -64,6 +65,7 @@
             // 
             // frmSaveScore
             // 
+            this.AcceptButton = this.btnsave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 205);
